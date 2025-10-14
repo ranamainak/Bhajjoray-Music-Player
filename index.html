@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhajjoray - Sound of Bhakti</title>
+    <!-- Removed incorrect integrity hash to prevent potential loading issues -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1067475344414814"
+     crossorigin="anonymous"></script>
+    <style>
+        /* Global setting to include padding and border in the element's total width, which prevents horizontal scrolling */
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            overflow-x: hidden; /* Ensures no horizontal scrollbar appears */
+        }
+        .container {
+            max-width: 1400px; /* Constrain max width for desktop viewing comfort */
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%; /* Ensures it always takes full available width up to max-width */
+        }
+        header {
+            background-color: #FFF085;
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        /* Desktop Default: Horizontal alignment */
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .site-branding {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .site-logo {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: content;
+            border: 2px solid #4A90E2;
+        }
+        .site-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left; /* Default left alignment on desktop */
+        }
+        .site-text h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #4A90E2;
+        }
+        .site-text p {
+            margin: 5px 0 0 0;
+            font-size: 1.2em;
+        }
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 0; /* Default spacing */
+        }
+        .social-links a {
+            text-decoration: none;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .social-links img {
+            width: 30px;
+            height: 30px;
+            transition: transform 0.3s;
+        }
+        .social-links a:hover img {
+            transform: scale(1.1);
+        }
+        /* Desktop: Three columns side-by-side (no changes needed) */
+        .main-content {
+            display: flex;
+            gap: 20px;
+        }
+        .media-player, .playlists, .songs-in-playlist {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex: 1; /* Equal width for all three panels */
+            min-height: 300px; 
+            display: flex;
+            flex-direction: column;
+        }
+        /* NEW: Center the headers in the playlist sections */
+        .playlists h2, .songs-in-playlist h2 {
+            text-align: center;
+            color: #4A90E2;
+        }
+        .playlists ul, .songs-in-playlist ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+            flex-grow: 1;
+            overflow-y: auto;
+            max-height: 250px; 
+        }
+        .playlists li, .songs-in-playlist li {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+            /* NEW: Center the text content of the list item */
+            text-align: center; 
+            transition: background-color 0.2s;
+        }
+        .playlists li:hover, .songs-in-playlist li:hover {
+            background-color: #f0f0f0;
+        }
+        .playlists li.selected, .songs-in-playlist li.selected {
+            background-color: #4A90E2;
+            color: #fff;
+        }
+        .media-player-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+            gap: 8px;
+            padding-top: 10px;
+        }
+        .album-art {
+            width: 250px;
+            height: 150px;
+            object-fit: contain;
+            border-radius: 8px;
+            border: 0px solid #4A90E2;
+            flex-shrink: 0;
+        }
+        #song-title {
+            margin: 0;
+            font-size: 1.2em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: center;
+            max-width: 100%;
+            flex-shrink: 0;
+        }
+        .player-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+            width: 100%;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .media-player audio {
+            width: calc(100% - 50px); 
+            max-height: 50px;
+            flex-shrink: 0;
+        }
+        .repeat-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            color: #333;
+            padding: 5px;
+            border-radius: 5px;
+            flex-shrink: 0;
+            margin-top: 5px;
+        }
+        .repeat-button.active {
+            color: #4A90E2;
+            background-color: #e6f0fa;
+        }
+        .repeat-button:hover {
+            background-color: #f0f0f0;
+        }
+        /* Single Ad Section Styling (no changes needed) */
+        .ad-container {
+            display: flex;
+            justify-content: center; 
+            margin: 20px 0;
+        }
+        .ad-section {
+            background-color: #fff;
+            padding: 5px;
+            border-radius: 8px;
+            text-align: center;
+            width: 320px; 
+            min-height: 100px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .ad-section p {
+            margin-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #FFF085;
+            color: #000000;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        /* --- Tablet & Mobile Responsiveness --- */
+
+        /* Tablet (Max 1024px) - Stack main content vertically, but ALSO center the header content */
+        @media (max-width: 1024px) {
+            .main-content {
+                flex-direction: column; 
+            }
+            .media-player, .playlists, .songs-in-playlist {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+            .playlists ul, .songs-in-playlist ul {
+                max-height: 300px; 
+            }
+            .album-art {
+                width: 120px;
+                height: 120px;
+            }
+            
+            /* Apply Centering for Header (Tablet View) */
+            .header-content {
+                flex-direction: column;
+                align-items: center; /* Center everything horizontally */
+            }
+            .site-branding {
+                flex-direction: column; /* Stack logo and text vertically */
+                align-items: center;
+            }
+            .site-text {
+                align-items: center; /* Center the h1 and p within site-text */
+                margin-bottom: 10px; /* Space after subtitle */
+            }
+            .social-links {
+                margin-top: 10px; /* Space before social media icons */
+            }
+        }
+
+        /* Mobile (Max 600px) - Full Centered Stack */
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            /* Header content already set to column/center in the 1024px query, inheriting that */
+            .site-logo {
+                width: 70px;
+                height: 70px;
+            }
+            .site-text h1 {
+                font-size: 2em;
+            }
+            .site-text p {
+                font-size: 1em;
+            }
+            .playlists ul, .songs-in-playlist ul {
+                max-height: 200px; 
+            }
+            .ad-section {
+                width: 100%; 
+            }
+            .media-player audio {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="site-branding">
+                    <!-- 1. Logo - UPDATED: Changed to use a local PNG image -->
+                    <img src="flute_channel.png" alt="Bhajjoray Logo" class="site-logo">
+                    <div class="site-text">
+                        <!-- 2. Title -->
+                        <h1>Bhajjoray</h1>
+                        <!-- 3. Subtitle -->
+                        <p>Sound of Bhakti</p>
+                    </div>
+                </div>
+                <!-- 5. Social Media Icons (Separated by margins/gap applied to parents) -->
+                <div class="social-links">
+                <div class="icon-container">
+                    <a href="#" aria-label="Shop on our E-commerce Site"><i class="fas fa-shopping-cart"></i></a>
+                    <span class="coming-soon-text">Coming Soon</span>
+                </div>
+
+                <div class="icon-container">
+                    <a href="#" aria-label="Download our Bhajjoray App"><i class="fab fa-google-play"></i></a>
+                    <span class="coming-soon-text">Coming Soon</span>
+                </div>
+                    <a href="https://www.facebook.com">
+                         <!-- Placeholder social icons with fallbacks -->
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo" onerror="this.alt='Facebook';this.src='https://placehold.co/30x30/1877F2/ffffff?text=F'">
+                    </a>
+                    <a href="https://www.instagram.com">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo" onerror="this.alt='Instagram';this.src='https://placehold.co/30x30/C13584/ffffff?text=I'">
+                    </a>
+                    <a href="https://www.youtube.com">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube Logo" onerror="this.alt='YouTube';this.src='https://placehold.co/30x30/FF0000/ffffff?text=Y'">
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="media-player">
+                <div class="media-player-content">
+                    <img id="album-art" class="album-art" src="flute_channel.png" alt="Default Album Art">
+                    <h2 id="song-title">Select song from playlist</h2>
+                    <div class="player-controls">
+                        <audio id="audio-player" controls controlsList="nodownload">
+                            <source id="audio-source" src="#" type="audio/mpeg">
+                            Your browser does support the audio element.
+                        </audio>
+                        <button id="repeat-button" class="repeat-button" title="Toggle Repeat">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="playlists">
+                <h2>Playlists</h2>
+                <ul id="playlist-list">
+                    <!-- Playlists will be dynamically inserted here -->
+                </ul>
+            </div>
+
+            <div class="songs-in-playlist">
+                <h2>Songs in Playlist</h2>
+                <ul id="song-list">
+                    <li>Select a playlist to see songs.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Modified: Only one ad section as requested -->
+        <div class="ad-container">
+            <div class="ad-section">
+                <h3>Google Ad Section</h3>
+                <p>Your advertisement could be here!</p>
+                <!-- This is where a single AdSense unit would load -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-1067475344414814"
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 Bhajjoray. All rights reserved for songs and lyrics on this site.</p>
+        </footer>
+    </div>
+
+    <script>
+    // Wait for the DOM to be fully loaded before running the script
+    document.addEventListener('DOMContentLoaded', async () => {
+
+        let playlists = {};
+        try {
+            const response = await fetch('playlists.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            playlists = await response.json();
+        } catch (error) {
+            console.error("Could not fetch playlist data:", error);
+            // Optional: Display an error message to the user
+            const playlistList = document.getElementById('playlist-list');
+            playlistList.innerHTML = '<li>Error loading playlists.</li>';
+            return; // Stop execution if data fails to load
+        }
+
+        // Get all the necessary elements from the page
+        const playlistList = document.getElementById('playlist-list');
+        const songList = document.getElementById('song-list');
+        const audioPlayer = document.getElementById('audio-player');
+        const audioSource = document.getElementById('audio-source');
+        const repeatButton = document.getElementById('repeat-button');
+        const songTitle = document.getElementById('song-title');
+        const albumArt = document.getElementById('album-art');
+
+        let currentPlaylistId = null;
+        let currentSongIndex = -1;
+
+        // Build the UI and add event listeners
+        const playlistNames = Object.keys(playlists);
+        playlistList.innerHTML = playlistNames.map(name => `<li data-playlist="${name}">${name}</li>`).join('');
+        
+        const playlistItems = document.querySelectorAll('#playlist-list li');
+
+        // Toggle repeat functionality
+        repeatButton.addEventListener('click', () => {
+            audioPlayer.loop = !audioPlayer.loop;
+            repeatButton.classList.toggle('active', audioPlayer.loop);
+        });
+
+        // Function to play a song
+        async function playSong(playlistId, songIndex) {
+            const songs = playlists[playlistId] || [{ title: "No songs available", url: "#", image: "default.jpg" }];
+            const song = songs[songIndex];
+            
+            // Use the URL directly from the JSON file
+            audioSource.src = song.url;
+            audioPlayer.load();
+            
+            try {
+                await audioPlayer.play();
+            } catch (error) {
+                console.error("Playback failed:", error);
+            }
+            
+            songTitle.textContent = song.title;
+            albumArt.src = `images/${song.image}`;
+            albumArt.alt = `${song.title} Album Art`;
+
+            // Update selected song in the list
+            const songItems = songList.querySelectorAll('li');
+            songItems.forEach((item, index) => {
+                item.classList.toggle('selected', index === songIndex);
+            });
+
+            currentPlaylistId = playlistId;
+            currentSongIndex = songIndex;
+        }
+
+        // Handle song end for automatic playback
+        audioPlayer.addEventListener('ended', () => {
+    // This function handles playing the next song automatically.
+    if (!audioPlayer.loop && currentPlaylistId) { // Check if the single-song repeat is OFF
+        const songs = playlists[currentPlaylistId];
+        let nextSongIndex = currentSongIndex + 1;
+
+        // --- THIS IS THE MODIFIED PART ---
+        // If we've reached the end of the playlist, loop back to the beginning.
+        if (nextSongIndex >= songs.length) {
+            nextSongIndex = 0; // Reset to the first song
+        }
+        // --- END OF MODIFICATION ---
+        
+        playSong(currentPlaylistId, nextSongIndex);
+    }
+});
+
+        // Add click event listeners to playlist items
+        playlistItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Remove 'selected' class from all playlist items
+                playlistItems.forEach(i => i.classList.remove('selected'));
+                // Add 'selected' class to clicked item
+                item.classList.add('selected');
+                
+                // Get playlist ID
+                const playlistId = item.getAttribute('data-playlist');
+                
+                // Update song list
+                const songs = playlists[playlistId] || [{ title: "No songs available", url: "#", image: "default.jpg" }];
+                songList.innerHTML = songs.map((song, index) => `<li data-index="${index}">${song.title}</li>`).join('');
+
+                // Play the first song automatically
+                if (songs.length > 0 && songs[0].url !== "#") {
+                    playSong(playlistId, 0);
+                }
+
+                // Add click event listeners to song items
+                const songItems = songList.querySelectorAll('li');
+                songItems.forEach(songItem => {
+                    songItem.addEventListener('click', () => {
+                        const index = parseInt(songItem.getAttribute('data-index'), 10);
+                        playSong(playlistId, index);
+                    });
+                });
+            });
+        });
+    });
+    </script>
+</body>
+</html>
+
