@@ -23,13 +23,13 @@
         { "title": "Shree Durga Kavach", "image": "shree durga kavach.jpg", "url": "songs/shree_durga_kavach.mp3" },
         { "title": "Laxmi Vandana", "image": "laxmivandana.jpg", "url": "songs/laxmi_aarti.mp3" },
         { "title": "Veena Ki Jhankar Sunao", "image": "veena.jpg", "url": "songs/veena.mp3" },
-        { "title": "Om Bhur Bhuvah Svah", "image": "gayatriMantra.jpg", "url": "songs/gayatriMantra.mp3" },
+        { "title": "Om Bhur Bhuvah Svah", "image": "gayatriMantra.jpg", "url": "songs/gayatriMantra_rs80.mp3" },
         { "title": "Shree Durga Chalisa", "image": "durgachalisa.jpg", "url": "songs/shree_durga_chalisa.mp3" }
         
     ],
     "Narayan Narayan": [
         { "title": "Shree Narayan Narayan Kavach", "image": "shree narayan Kavach.jpg", "url": "songs/shree narayan Kavach.mp3" },
-        { "title": "Om Namo Bhagvate Vasudevaya", "image": "om namah bhagvate vasudevay.jpg", "url": "songs/om namah bhagvate vasudevay.mp3" },
+        { "title": "Om Namo Bhagvate Vasudevaya", "image": "om namah bhagvate vasudevay.jpg", "url": "songs/om namah bhagvate vasudevay_rs.mp3" },
         { "title": "Govindam Hari Sharanam", "image": "govind hari charan.jpg", "url": "songs/govind hari charan.mp3" },
         { "title": "Shreeman Narayan Narayan Hare Hare", "image": "shreeman narayan.jpg", "url": "songs/shreeman narayan.mp3" }
     ],
@@ -58,7 +58,7 @@
         { "title": "Kawariya Kawar Uthao Har Har Mahadev", "image": "kawariya kawar uthao har har mahadev.jpg", "url": "songs/kawariya_kawar_uthao_har_har_mahadev.mp3" },
         { "title": "Parvati Vallabha Ashtakam", "image": "parvati vallabh.jpg", "url": "songs/parvati_vallabha_ashtakam.mp3" },
         { "title": "Shiv Kailash Vasi", "image": "shiv kailash vasi.jpg", "url": "songs/shiv_kailash_vasi.mp3" },
-        { "title": "Maha Mrityunjaya Mantra", "image": "maha mritunjaya.jpg", "url": "songs/maha_mrityunjaya_mantra.mp3" },
+        { "title": "Maha Mrityunjaya Mantra", "image": "maha mritunjaya.jpg", "url": "songs/maha_mrityunjaya_mantra_rs2.mp3" },
         { "title": "Om Namah Shivay Kailashpati Shivaye", "image": "om namah shivay kailash pati.jpg", "url": "songs/om_namah_shivay_kailashpati_shivaye.mp3" },
         { "title": "Om Namah Shivay", "image": "om namah shivay.jpg", "url": "songs/om_namah_shivay.mp3" }
     ],
