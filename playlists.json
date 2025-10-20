@@ -54,13 +54,13 @@
         { "title": "Shiv Stuti", "image": "shiv stuti.jpg", "url": "songs/shiv_stuti.mp3" },
         { "title": "Shiv Gayatri Mantra", "image": "shiv gayatri mantra.jpg", "url": "songs/shiv_gayatri_mantra.mp3" },
         { "title": "Shiv Swarnmala Stuti", "image": "shiv swarnmala stuti.jpg", "url": "songs/shiv_swarnmala_stuti.mp3" },
-        { "title": "Kawariya Kawar Uthao Jai Bholenath", "image": "kawariya kawar uthao jai bhole nath.jpg", "url": "songs/kawariya_kawar_uthao_jai_bholenath.mp3" },
+        { "title": "Kawariya Kawar Uthao Jai Bholenath", "image": "kawariya kawar uthao jai bhole nath.jpg", "url": "songs/kawariya_kawar_uthao.mp3" },
         { "title": "Kawariya Kawar Uthao Har Har Mahadev", "image": "kawariya kawar uthao har har mahadev.jpg", "url": "songs/kawariya_kawar_uthao_har_har_mahadev.mp3" },
         { "title": "Parvati Vallabha Ashtakam", "image": "parvati vallabh.jpg", "url": "songs/parvati_vallabha_ashtakam.mp3" },
         { "title": "Shiv Kailash Vasi", "image": "shiv kailash vasi.jpg", "url": "songs/shiv_kailash_vasi.mp3" },
         { "title": "Maha Mrityunjaya Mantra", "image": "maha mritunjaya.jpg", "url": "songs/maha_mrityunjaya_mantra_rs2.mp3" },
         { "title": "Om Namah Shivay Kailashpati Shivaye", "image": "om namah shivay kailash pati.jpg", "url": "songs/om_namah_shivay_kailashpati_shivaye.mp3" },
-        { "title": "Om Namah Shivay", "image": "om namah shivay.jpg", "url": "songs/om_namah_shivay.mp3" }
+        { "title": "Om Namah Shivay", "image": "om namah shivay.jpg", "url": "songs/o.mp3" }
     ],
     "Krishna Bhajans": [
         { "title": "Hari Tum Haro Jann Ki Bheer", "image": "hari tum haro.jpg", "url": "songs/hari tum haro.mp3" },
