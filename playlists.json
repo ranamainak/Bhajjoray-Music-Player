@@ -24,6 +24,9 @@
         { "title": "Laxmi Vandana", "image": "laxmivandana.jpg", "url": "songs/laxmi_aarti.mp3" },
         { "title": "Veena Ki Jhankar Sunao", "image": "veena.jpg", "url": "songs/veena.mp3" },
         { "title": "Gayatri Mantra", "image": "GayatriMantra.jpg", "url": "songs/gayatriMantra_rs80.mp3" },
+	{ "title": "Chaati Maiya", "image": "chaati_maiya.jpg", "url": "songs/chaati_maiya.mp3" },
+	{ "title": "Devuthni Ekadashi Mantra", "image": "devuthni_ekadashi_mantra.jpg", "url": "songs/devuthni_ekadashi_mantra.mp3" },
+	{ "title": "Shree Mahalakshmi Shtakam", "image": "sri_mahalakshmi_ashtakam.jpg", "url": "songs/sri_mahalakshmi_ashtakam.mp3" },
         { "title": "Shree Durga Chalisa", "image": "durgachalisa.jpg", "url": "songs/shree_durga_chalisa.mp3" }
     ],
     "Narayan Narayan": [
@@ -31,6 +34,7 @@
         { "title": "Om Namo Bhagvate Vasudevaya", "image": "om namah bhagvate vasudevay.jpg", "url": "songs/om namah bhagvate vasudevay_rs.mp3" },
         { "title": "Govindam Hari Sharanam", "image": "govind hari charan.jpg", "url": "songs/Govindam Hari Sharanam.mp3" },
 	{ "title": "Vishnu Gayatri Mantra", "image": "vishnu_gayatri_mantra.jpg", "url": "songs/vishnu_gayatri_mantra.mp3" },
+	{ "title": "Shree Vishnu Mantra Devuthani", "image": "shree_vishnu_mantra_devuthani.jpg", "url": "songs/shree_vishnu_mantra_devuthani.mp3" },
         { "title": "Bhajman Narayan Narayan Hare Hare", "image": "shreeman narayan.jpg", "url": "songs/bhajman narayan.mp3" }
     ],
     "Khatu Shayam": [
