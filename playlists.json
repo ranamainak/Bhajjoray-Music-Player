@@ -9,7 +9,7 @@
         { "title": "Bhrihaspati Dev Ki Aarti", "image": "brihaspati dev ki aarti.jpg", "url": "songs/brihaspati dev ki aarti.mp3" }
     ],
     "Hanuman": [
-        { "title": "Raam Raam Hanuman Ji", "image": "raam raam hanuman ji.jpg", "url": "songs/raam_raam_hanuman_ji.mp3" },
+        { "title": "Ram Ram Hanuman Ji", "image": "raam raam hanuman ji.jpg", "url": "songs/raam_raam_hanuman_ji.mp3" },
         { "title": "Jai Hanuman Sabke Hitkari", "image": "jai hanuman sabke.jpg", "url": "songs/jai_hanuman_sabke_hitkari.mp3" }
     ],
     "Jai Mata Di": [
@@ -45,6 +45,12 @@
         { "title": "Prabhu Kab Re Miloge", "image": "prabhu kab re miloge.jpg", "url": "songs/prabhu kab re miloge.mp3" },
         { "title": "Payo Ji Maine Ram Ratan Dhan Payo", "image": "payo ji maine ram ratan.jpg", "url": "songs/payo ji maine ram ratan.mp3" },
         { "title": "More Toh Govind Madhav", "image": "more toh govind madhav.jpg", "url": "songs/more toh govind madhav.mp3" }
+    ],
+    "Ram Ram Ji": [
+        { "title": "Ram Ka Naam", "image": "ram ka naam.jpg", "url": "songs/ram ka naam.mp3" },
+        { "title": "Ram Shree Ram", "image": "ram shree ram.jpg", "url": "songs/ram shree ram.mp3" },
+	{ "title": "Shree Ram Kripalu", "image": "shree ram kripalu.jpg", "url": "songs/shree ram kripalu.mp3" },
+        { "title": "Suno Ram", "image": "suno ram.jpg", "url": "songs/suno ram.mp3" }
     ],
     "Shiv Bhakti": [
         { "title": "Shiv Tandav Storam", "image": "shiv tandav stotram.jpg", "url": "songs/shiv tandav stotram.mp3" },
