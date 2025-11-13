@@ -1,4 +1,8 @@
 {
+    "Khatu Shayam": [
+	{ "title": "Aaj Arzi Lagi Hai Sawariya", "image": "aaj lagi hai arzi.jpg", "url": "songs/aaj lagi hai arzi_.mp3" },
+	{ "title": "O Khatu Wale Koi Nahin Mera", "image": "o khatu wale.jpg", "url": "songs/o khatu wale.mp3" }
+    ],
     "Guru Pujan": [
         { "title": "Brihaspativar Vrat Katha", "image": "brihaspativar vrat katha.jpg", "url": "songs/brihaspativar vrat katha.mp3" },
         { "title": "Nirvana Shatkam", "image": "nirvaan shatkam.jpg", "url": "songs/nirvaan shatkam.mp3" },
@@ -36,10 +40,6 @@
 	{ "title": "Vishnu Gayatri Mantra", "image": "vishnu_gayatri_mantra.jpg", "url": "songs/vishnu_gayatri_mantra.mp3" },
 	{ "title": "Shree Vishnu Mantra Devuthani", "image": "shree_vishnu_mantra_devuthani.jpg", "url": "songs/shree_vishnu_mantra_devuthani.mp3" },
         { "title": "Bhajman Narayan Narayan Hare Hare", "image": "shreeman narayan.jpg", "url": "songs/bhajman narayan.mp3" }
-    ],
-    "Khatu Shayam": [
-        { "title": "O Khatu Wale Koi Nahin Mera", "image": "o khatu wale.jpg", "url": "songs/o khatu wale.mp3" },
-        { "title": "Aaj Arzi Lagi Hai Sawariya", "image": "aaj lagi hai arzi.jpg", "url": "songs/aaj lagi hai arzi_.mp3" }
     ],
     "Meera Bhajans": [
         { "title": "Prabhu Kab Re Miloge", "image": "prabhu kab re miloge.jpg", "url": "songs/prabhu kab re miloge.mp3" },
