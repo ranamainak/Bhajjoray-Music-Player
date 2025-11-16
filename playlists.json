@@ -35,7 +35,8 @@
         { "title": "Govindam Hari Sharanam", "image": "govind hari charan.jpg", "url": "songs/Govindam Hari Sharanam.mp3" },
 	{ "title": "Vishnu Gayatri Mantra", "image": "vishnu_gayatri_mantra.jpg", "url": "songs/vishnu_gayatri_mantra.mp3" },
 	{ "title": "Shree Vishnu Mantra Devuthani", "image": "shree_vishnu_mantra_devuthani.jpg", "url": "songs/shree_vishnu_mantra_devuthani.mp3" },
-        { "title": "Bhajman Narayan Narayan Hare Hare", "image": "shreeman narayan.jpg", "url": "songs/bhajman narayan.mp3" }
+        { "title": "Shree Vishnu Sahasranaam", "image": "Vishnu Sahasranaam.jpg", "url": "songs/Vishnu Sahasranaam.mp3" },
+	{ "title": "Bhajman Narayan Narayan Hare Hare", "image": "shreeman narayan.jpg", "url": "songs/bhajman narayan.mp3" }
     ],
     "Khatu Shayam": [
         { "title": "O Khatu Wale Koi Nahin Mera", "image": "o khatu wale.jpg", "url": "songs/o khatu wale.mp3" },
