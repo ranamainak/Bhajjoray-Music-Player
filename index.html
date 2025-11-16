@@ -14,14 +14,32 @@
 
     <style>
         * { box-sizing: border-box; }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-            overflow-x: hidden;
-        }
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+.devotion-line {
+    text-align: center;
+    margin: 10px auto 20px auto;
+}
+
+.devotion-line p {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2em;
+    font-style: italic;
+    color: #00050a; /* matches theme */
+    margin: 40px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* fallback color + background image */
+    background: #f4f4f4 url('background_horizontal.png') repeat;
+    background-position: top center;
+    color: #333;
+    overflow-x: hidden;
+}
+
         .container { max-width: 1400px; margin: 0 auto; padding: 20px; width: 100%; }
         header {
             background-color: #FFF085; padding: 15px 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -29,9 +47,9 @@
         }
         .header-content { display: flex; justify-content: space-between; align-items: center; }
         .site-branding { display: flex; align-items: center; gap: 15px; }
-        .site-logo { width: 90px; height: 90px; border-radius: 50%; object-fit: content; border: 2px solid #4A90E2; }
+        .site-logo { width: 90px; height: 90px; border-radius: 50%; object-fit: content; border: 2px solid #00050a; }
         .site-text { display: flex; flex-direction: column; justify-content: center; text-align: left; }
-        .site-text h1 { margin: 0; font-size: 2.5em; color: #4A90E2; }
+        .site-text h1 { margin: 0; font-size: 2.5em; color: #00050a; }
         .site-text p { margin: 5px 0 0 0; font-size: 1.2em; }
 
 
@@ -65,7 +83,8 @@
         .inactive-icon { opacity: 0.4; pointer-events: none; }
 
         /* ✅ Make the ad container visible so an ad can render during verification */
-        .ad-container { display: flex; justify-content: center; margin: 20px 0; }
+        .ad-container {  display: none;
+	}
         .ad-section {
             background-color: #fff; padding: 5px; border-radius: 8px; text-align: center;
             width: 320px; min-height: 100px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -133,6 +152,12 @@
                 </div>
             </div>
         </header>
+
+	<div class="devotion-line">
+    <p>Experience peace, devotion, and spirituality through timeless bhakti songs</p>
+</div>
+
+
 
         <div class="main-content">
             <div class="media-player">
