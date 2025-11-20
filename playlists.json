@@ -106,7 +106,7 @@
 	{ "title": "Shree Radha Kripa Kataksha", "image": "radha kripa.jpg", "url": "songs/radha kripa.mp3" },
         { "title": "Radhe Radhe Vrindavan Ki Bayaar", "image": "vridavan ki bayar.jpg", "url": "songs/vridavan ki bayar.mp3" },
         { "title": "Radhe Radhe Barsane Wali Radhe", "image": "barsane wali radhe.jpg", "url": "songs/barsane wali radhe.mp3" },
-        { "title": "Radhe Radhe Bolo Vrindavan Mein Ras Barse", "image": "vridavan mein ras barse.jpg", "url": "songs/vridavan mein ras barse.mp3" }
+        { "title": "Radhe Radhe Bolo", "image": "vridavan mein ras barse.jpg", "url": "songs/vridavan mein ras barse.mp3" }
     ],
     "Vighnaharta Ganesh": [
         { "title": "Sankat Nashak Ganesh Stotram", "image": "sankatnashak ganesh.jpeg", "url": "songs/sankat_nashak_ganesh_stotram.mp3" },
