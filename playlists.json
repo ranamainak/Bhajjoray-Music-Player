@@ -45,8 +45,9 @@
     ],
     "Meera Bhajans": [
         { "title": "Prabhu Kab Re Miloge", "image": "prabhu kab re miloge.jpg", "url": "songs/prabhu kab re miloge.mp3" },
+        { "title": "Pag Ghoongroo Baandh Meera Nachi", "image": "pag.jpg", "url": "songs/pag.mp3" },
         { "title": "Payo Ji Maine Ram Ratan Dhan Payo", "image": "payo ji maine ram ratan.jpg", "url": "songs/payo ji maine ram ratan.mp3" },
-        { "title": "More Toh Govind Madhav", "image": "more toh govind madhav.jpg", "url": "songs/more toh govind madhav.mp3" }
+	{ "title": "More Toh Govind Madhav", "image": "more toh govind madhav.jpg", "url": "songs/more toh govind madhav.mp3" }
     ],
     "Ram Ram Ji": [
         { "title": "Ram Ka Naam", "image": "ram ka naam.jpg", "url": "songs/ram ka naam.mp3" },
