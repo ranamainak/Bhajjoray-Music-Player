@@ -5,7 +5,7 @@
         { "title": "Kabir ke Dohe", "image": "kabir ke dohe.jpg", "url": "songs/kabir_ke_dohe.mp3" },
         { "title": "Guru Hai Bhramha", "image": "guru hai bhramha.jpg", "url": "songs/guru hai bhramha.mp3" },
         { "title": "Totkastakam", "image": "totka.jpg", "url": "songs/totka.mp3" },
-	{ "title": "Hey PathPradarshak", "image": "hey pad pradarshak.jpg", "url": "songs/hey pad pradarshak.mp3" },
+		{ "title": "Hey PathPradarshak", "image": "hey pad pradarshak.jpg", "url": "songs/hey pad pradarshak.mp3" },
         { "title": "Guru Sharan Mein", "image": "guru sharan.jpg", "url": "songs/guru sharan.mp3" },
         { "title": "Bhrihaspati Dev Ki Aarti", "image": "brihaspati dev ki aarti.jpg", "url": "songs/brihaspati dev ki aarti.mp3" }
     ],
@@ -78,7 +78,7 @@
     "Krishna Bhajans": [
         { "title": "Hari Tum Haro Jann Ki Bheer", "image": "hari tum haro.jpg", "url": "songs/hari tum haro.mp3" },
         { "title": "Govind Mero Gopal", "image": "Govind Mero Gopal.jpg", "url": "songs/Govind Mero Gopal.mp3" },
-	{ "title": "So Ja Re Kanhaiya", "image": "so ja re kanhaiya.jpg", "url": "songs/so ja re kanhaiya.mp3" },
+		{ "title": "So Ja Re Kanhaiya", "image": "so ja re kanhaiya.jpg", "url": "songs/so ja re kanhaiya.mp3" },
         { "title": "Hare Krishna Maha Mantra", "image": "shree krishna mahamantra.jpg", "url": "songs/hare krishna mahamantra.mp3" },
         { "title": "O Re Kanhaiya", "image": "o re kanhaiya.jpg", "url": "songs/o re kanhaiya.mp3" },
         { "title": "Sakal Braj Mein Aaya Re Kanhaiya", "image": "sakal braj mein.jpg", "url": "songs/sakal braj mein.mp3" },
