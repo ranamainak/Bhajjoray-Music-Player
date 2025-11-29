@@ -389,6 +389,12 @@
             "youtubeUrl": "https://www.youtube.com/watch?v=aJZIsWLr8RA"
         },
         {
+            "title": "Meri Naav Jo Utri",
+            "image": "meri naav jo utri.jpg",
+            "url": "songs/meri naav jo utri.mp3",
+            "youtubeUrl": "https://youtu.be/rm6PPPOX5Rs"
+        },
+	{
             "title": "Govind Mero Gopal",
             "image": "Govind Mero Gopal.jpg",
             "url": "songs/Govind Mero Gopal.mp3",
