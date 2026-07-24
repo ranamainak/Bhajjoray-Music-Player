@@ -75,6 +75,12 @@
       "image": "sai.jpg",
       "url": "songs/sai.mp3",
       "youtubeUrl": "https://youtu.be/Np4hzt4rMzI"
+    },
+    {
+      "title": "Sai Baba Mere",
+      "image": "sai baba mere.jpg",
+      "url": "songs/sai baba mere.mp3",
+      "youtubeUrl": "https://www.youtube.com/watch?v=Zl27PkAXOcc"
     }
   ],
   "Shani Dev": [
@@ -227,6 +233,12 @@
       "image": "o khatu wale.jpg",
       "url": "songs/o khatu wale.mp3",
       "youtubeUrl": "https://www.youtube.com/watch?v=ogNIdZrjmy0"
+    },
+    {
+      "title": "Tere charnanu",
+      "image": "tere charnanu.jpg",
+      "url": "songs/tere charnanu.mp3",
+      "youtubeUrl": "https://youtu.be/rrXqWMrXwAo"
     },
     {
       "title": "Khatu Shyam Ki Katha",
@@ -423,6 +435,18 @@
       "youtubeUrl": "https://www.youtube.com/watch?v=aJZIsWLr8RA"
     },
     {
+      "title": "Hey Girdhari Madan Murari",
+      "image": "Hey Girdhari Madan Murari.jpg",
+      "url": "songs/hey girdhari madan murari.mp3",
+      "youtubeUrl": "https://youtu.be/jm1sNUn6Vps"
+    },
+    {
+      "title": "Hori Khelan Ko Nandlal",
+      "image": "hori khelan ko nandlal.jpg",
+      "url": "songs/hori khelan ko nandlal.mp3",
+      "youtubeUrl": "https://youtu.be/IqRzouzE5Uw"
+    },
+    {
       "title": "Meri Naav Jo Utri",
       "image": "meri naav jo utri.jpg",
       "url": "songs/meri naav jo utri.mp3",
@@ -543,6 +567,18 @@
       "image": "shree radha naanvali.jpg",
       "url": "songs/shree radha naanvali.mp3",
       "youtubeUrl": "https://www.youtube.com/watch?v=7YB3PpJKraA"
+    },
+    {
+      "title": "Govind Radha Girdhari",
+      "image": "govind radha girdhari.jpg",
+      "url": "songs/govind radha girdhari.mp3",
+      "youtubeUrl": "https://youtu.be/Zbp2Fps8Dco"
+    },
+    {
+      "title": "Rang Do Chunariya",
+      "image": "rang do chunariya.jpg",
+      "url": "songs/rang do chunariya.mp3",
+      "youtubeUrl": "https://youtu.be/RDa2hzP36eQ"
     },
     {
       "title": "O Radha Rani",
