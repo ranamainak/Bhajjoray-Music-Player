@@ -451,12 +451,18 @@
       "youtubeUrl": "https://www.youtube.com/watch?v=6dtIN24EbtA"
     }
   ],
-  "Krishna Bhajans": [
+  "Krishna": [
     {
       "title": "Hari Tum Haro Jann Ki Bheer",
       "image": "hari tum haro.jpg",
       "url": "songs/hari tum haro.mp3",
       "youtubeUrl": "https://www.youtube.com/watch?v=aJZIsWLr8RA"
+    },
+    {
+      "title": "Radhe Krishna Krishna Krishna",
+      "image": "radhe krishna.jpg",
+      "url": "songs/radhe krishna.mp3",
+      "youtubeUrl": ""
     },
     {
       "title": "Hey Girdhari Madan Murari",
