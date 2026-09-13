@@ -55,9 +55,9 @@
       "youtubeUrl": "https://www.youtube.com/watch?v=7sXMon4-CAk"
     }
   ],
-  "Hanuman": [
+  "+ Hanuman": [
     {
-      "title": "Ram Ram Hanuman Ji",
+      "title": "[New]Ram Ram Hanuman Ji",
       "image": "raam raam hanuman ji.jpg",
       "url": "songs/raam_raam_hanuman_ji.mp3",
       "youtubeUrl": "https://www.youtube.com/watch?v=Ko_96dTWFwk"
@@ -283,12 +283,18 @@
       "youtubeUrl": "https://www.youtube.com/watch?v=oCKpdXY77Wo"
     }
   ],
-  "Meera Bhajans": [
+  "+ Meera Bhajans": [
     {
       "title": "Prabhu Kab Re Miloge",
       "image": "prabhu kab re miloge.jpg",
       "url": "songs/prabhu kab re miloge.mp3",
       "youtubeUrl": "https://www.youtube.com/watch?v=Ftf72X9faX8"
+    },
+    {
+      "title": "[New]Mahare Toh Gridhar",
+      "image": "mahare toh.jpg",
+      "url": "songs/mahare toh.mp3",
+      "youtubeUrl": ""
     },
     {
       "title": "Payo Ji Maine Ram Ratan Dhan",
@@ -309,7 +315,7 @@
       "youtubeUrl": "https://www.youtube.com/watch?v=dfQ7Cd1MC9c"
     }
   ],
-  "Ram Ram": [
+  "+ Ram Ram": [
     {
       "title": "Ram Ka Naam",
       "image": "ram ka naam.jpg",
@@ -317,13 +323,13 @@
       "youtubeUrl": "https://www.youtube.com/watch?v=NsNjJInVYOA"
     },
     {
-      "title": "Mohe Raam Dhun Lagi",
+      "title": "[New]Mohe Raam Dhun Lagi",
       "image": "mohe raam dhun laagi.jpg",
       "url": "songs/mohe raam dhun laagi.mp3",
       "youtubeUrl": ""
     },
     {
-      "title": "Ram Naam",
+      "title": "[New]Ram Naam",
       "image": "raam naam.jpg",
       "url": "songs/raam naam.mp3",
       "youtubeUrl": ""
@@ -463,7 +469,7 @@
       "youtubeUrl": "https://www.youtube.com/watch?v=6dtIN24EbtA"
     }
   ],
-  "Krishna": [
+  "+ Krishna": [
     {
       "title": "Hari Tum Haro",
       "image": "hari tum haro.jpg",
@@ -471,7 +477,7 @@
       "youtubeUrl": "https://www.youtube.com/watch?v=aJZIsWLr8RA"
     },
     {
-      "title": "Raadhey Krishna 2",
+      "title": "[New]Raadhey Krishna 2",
       "image": "radhey krishna 2.jpg",
       "url": "songs/radhey krishna 2.mp3",
       "youtubeUrl": ""
@@ -609,7 +615,7 @@
       "youtubeUrl": "https://www.youtube.com/watch?v=4U9U_DoZp_M"
     }
   ],
-  "Radha Rani": [
+  "+ Radha Rani": [
     {
       "title": "Shree Radha Naamvali",
       "image": "shree radha naanvali.jpg",
@@ -617,7 +623,7 @@
       "youtubeUrl": "https://www.youtube.com/watch?v=7YB3PpJKraA"
     },
     {
-      "title": "Radhey Radhey",
+      "title": "[New] Radhey Radhey",
       "image": "radhey.jpg",
       "url": "songs/radhey.mp3",
       "youtubeUrl": ""
