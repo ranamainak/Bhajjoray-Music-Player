@@ -725,7 +725,7 @@
       "youtubeUrl": "https://www.youtube.com/watch?v=XqvGNECNd9A"
     }
   ],
-  "Ganesh": [
+  "+ Ganesh": [
     {
       "title": "Sankat Nashak Ganesh Stotram",
       "image": "sankatnashak ganesh.jpeg",
@@ -733,7 +733,7 @@
       "youtubeUrl": "https://www.youtube.com/watch?v=PTKYsDAxikA"
     },
     {
-      "title": "Jai Ganesh Deva",
+      "title": "[New] Jai Ganesh Deva",
       "image": "jai ganesh deva1.jpg",
       "url": "songs/jai ganesh deva1.mp3",
       "youtubeUrl": "https://www.youtube.com/watch?v=F0uTf9FLRHs"
