@@ -5,307 +5,2932 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bhajjoray - Sound of Bhakti</title>
 
-    <!-- Font Awesome (unchanged) -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- ✅ Google AdSense: keep this single loader script in <head> -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1067475344414814"
-     crossorigin="anonymous"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1067475344414814"
+        crossorigin="anonymous"></script>
 
     <style>
-        * { box-sizing: border-box; }
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+        :root {
+            --bg-gold-light: #fffbeb;
+            --bg-gold-warm: #fef08a;
+            --bg-amber-soft: #fde047;
+            --glass-bg: linear-gradient(145deg, rgba(255, 252, 235, 0.72), rgba(254, 240, 138, 0.42));
+            --glass-bg-card: linear-gradient(145deg, rgba(255, 253, 240, 0.76), rgba(253, 230, 138, 0.45));
+            --glass-bg-hover: linear-gradient(145deg, rgba(255, 254, 245, 0.88), rgba(253, 224, 71, 0.56));
+            --glass-border: rgba(255, 255, 255, 0.78);
+            --glass-border-gold: rgba(217, 119, 6, 0.24);
+            --glass-highlight: rgba(255, 255, 255, 0.92);
+            --ink-primary: #2d1606;
+            --ink-secondary: #5c3412;
+            --ink-muted: #855224;
+            --gold-deep: #b45309;
+            --gold-rich: #d97706;
+            --gold-bright: #f59e0b;
+            --gold-glow: rgba(245, 158, 11, 0.36);
+            --radius-lg: 26px;
+            --radius-md: 18px;
+            --radius-sm: 12px;
+        }
 
-.devotion-line {
-    text-align: center;
-    margin: 10px auto 20px auto;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-.devotion-line p {
-    font-family: 'Great Vibes', cursive;
-    font-size: 2em;
-    font-style: italic;
-    color: #00050a; /* matches theme */
-    margin: 40px;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    /* fallback color + background image */
-    background: #f4f4f4 url('/images/background_horizontal.png') repeat;
-    background-position: top center;
-    color: #333;
-    overflow-x: hidden;
-}
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #fef3c7;
+            color: var(--ink-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.5;
+            position: relative;
+        }
 
-        .container { max-width: 1400px; margin: 0 auto; padding: 20px; width: 100%; }
+        /* Luminous Frosted Golden Backdrop */
+        .ambient-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background:
+                radial-gradient(circle at 12% 14%, rgba(255, 255, 255, 0.9) 0%, transparent 42%),
+                radial-gradient(circle at 86% 18%, rgba(251, 191, 36, 0.65) 0%, transparent 48%),
+                radial-gradient(circle at 78% 82%, rgba(245, 158, 11, 0.48) 0%, transparent 46%),
+                radial-gradient(circle at 18% 85%, rgba(254, 240, 138, 0.85) 0%, transparent 50%),
+                linear-gradient(135deg, #fffdf0 0%, #fef08a 48%, #fde68a 75%, #fcd34d 100%);
+            overflow: hidden;
+        }
+
+        .ambient-pattern {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-image: url('images/background_horizontal.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.11;
+            filter: sepia(0.5) saturate(1.3) brightness(1.08) blur(1px);
+            pointer-events: none;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(75px);
+            opacity: 0.65;
+            animation: floatOrb 18s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        .orb-1 {
+            width: 420px;
+            height: 420px;
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.65), transparent 70%);
+            top: -100px;
+            left: -70px;
+        }
+
+        .orb-2 {
+            width: 480px;
+            height: 480px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.45), transparent 70%);
+            top: 22%;
+            right: -130px;
+            animation-delay: -6s;
+        }
+
+        .orb-3 {
+            width: 380px;
+            height: 380px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.85), transparent 70%);
+            bottom: -90px;
+            left: 28%;
+            animation-delay: -11s;
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(34px, 26px) scale(1.08); }
+        }
+
+        /* Frosted Golden Glass Surface */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(26px) saturate(185%);
+            -webkit-backdrop-filter: blur(26px) saturate(185%);
+            border: 1px solid var(--glass-border);
+            box-shadow:
+                0 18px 42px rgba(146, 84, 14, 0.14),
+                0 4px 12px rgba(180, 105, 14, 0.08),
+                inset 0 1px 1px var(--glass-highlight),
+                inset 0 -1px 0 rgba(217, 119, 6, 0.15);
+        }
+
+        .container {
+            max-width: 1380px;
+            margin: 0 auto;
+            padding: 24px 20px 38px;
+            width: 100%;
+        }
+
+        /* Header */
         header {
-            background-color: #FFF085; padding: 15px 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 20px; border-radius: 8px;
+            border-radius: var(--radius-lg);
+            padding: 16px 24px;
+            margin-bottom: 24px;
         }
-        .header-content { display: flex; justify-content: space-between; align-items: center; }
-        .site-branding { display: flex; align-items: center; gap: 15px; }
-        .site-logo { width: 90px; height: 90px; border-radius: 50%; object-fit: content; border: 2px solid #00050a; }
-        .site-text { display: flex; flex-direction: column; justify-content: center; text-align: left; }
-        .site-text h1 { margin: 0; font-size: 2.5em; color: #00050a; }
-        .site-text p { margin: 5px 0 0 0; font-size: 1.2em; }
 
-
-  	.play-badge object { pointer-events: none; display:inline-block; vertical-align:middle; }
-
-
-        .social-links { display: flex; gap: 15px; margin-top: 0; }
-        .social-links a { text-decoration: none; padding: 5px; border-radius: 5px; display: inline-flex; align-items: center; justify-content: center; }
-        .social-links img { width: 30px; height: 30px; transition: transform 0.3s; }
-        .social-links a:hover img { transform: scale(1.1); }
-
-        .main-content { display: flex; gap: 20px; }
-        .media-player, .playlists, .songs-in-playlist {
-            background-color: #fff; padding: 20px; border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); flex: 1; min-height: 300px; display: flex; flex-direction: column;
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
-        .playlists h2, .songs-in-playlist h2 { text-align: center; color: #4A90E2; }
-        .playlists ul, .songs-in-playlist ul { list-style: none; padding: 0; margin: 10px 0 0 0; flex-grow: 1; overflow-y: auto; max-height: 250px; }
-        .playlists li, .songs-in-playlist li { padding: 10px; cursor: pointer; border-bottom: 1px solid #eee; text-align: center; transition: background-color 0.2s; }
-        .playlists li:hover, .songs-in-playlist li:hover { background-color: #f0f0f0; }
-        .playlists li.selected, .songs-in-playlist li.selected { background-color: #4A90E2; color: #fff; }
 
-        .media-player-content { flex-grow: 1; display: flex; flex-direction: column; align-items: center; overflow: hidden; gap: 8px; padding-top: 10px; }
-        .album-art { width: 300px; height: 250px; object-fit: contain; border-radius: 8px; border: 0; flex-shrink: 0; }
-        #song-title { margin: 0; font-size: 1.2em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center; max-width: 100%; flex-shrink: 0; }
-        .player-controls { display: flex; flex-direction: column; align-items: center; gap: 10px; flex-shrink: 0; width: 100%; justify-content: center; margin-top: 10px; }
-        .media-player audio { width: calc(100% - 50px); max-height: 50px; flex-shrink: 0; }
-        .repeat-button { background: none; border: none; cursor: pointer; font-size: 18px; color: #333; padding: 5px; border-radius: 5px; flex-shrink: 0; margin-top: 5px; }
-        .repeat-button.active { color: #4A90E2; background-color: #e6f0fa; }
-        .repeat-button:hover { background-color: #f0f0f0; }
-        .inactive-icon { opacity: 0.4; pointer-events: none; }
+        .site-branding {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
 
-        /* ✅ Make the ad container visible so an ad can render during verification */
-        .ad-container {  display: none;
-	}
+        .logo-ring {
+            position: relative;
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            padding: 3px;
+            background: linear-gradient(135deg, #fff7ed, #f59e0b, #b45309);
+            box-shadow: 0 8px 22px rgba(180, 83, 9, 0.25);
+            flex-shrink: 0;
+        }
+
+        .site-logo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            background: #fffbeb;
+        }
+
+        .site-text h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            line-height: 1.05;
+            background: linear-gradient(135deg, #451a03 10%, #b45309 85%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .site-text p {
+            font-size: 0.85rem;
+            color: var(--ink-secondary);
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            margin-top: 3px;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .play-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            border-radius: 999px;
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            box-shadow: 0 10px 24px rgba(180, 83, 9, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .play-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(180, 83, 9, 0.38);
+        }
+
+        .play-badge img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+
+        .social-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--ink-primary);
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            box-shadow: 0 4px 12px rgba(180, 83, 9, 0.08);
+            transition: all 0.25s ease;
+            font-size: 1rem;
+        }
+
+        .social-btn:hover {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            border-color: rgba(255, 255, 255, 0.8);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Devotion Banner */
+        .hero-banner {
+            border-radius: var(--radius-lg);
+            padding: 26px 28px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            right: -50px;
+            top: -50px;
+            width: 240px;
+            height: 240px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.65), transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-copy {
+            max-width: 780px;
+        }
+
+        .hero-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            color: var(--gold-deep);
+            background: rgba(255, 255, 255, 0.65);
+            border: 1px solid rgba(217, 119, 6, 0.28);
+            margin-bottom: 12px;
+        }
+
+        .hero-copy h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.7rem, 2.8vw, 2.35rem);
+            font-weight: 700;
+            line-height: 1.18;
+            color: var(--ink-primary);
+            margin-bottom: 8px;
+        }
+
+        .hero-copy p {
+            color: var(--ink-secondary);
+            font-size: 0.96rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            z-index: 1;
+        }
+
+        .stat-chip {
+            padding: 12px 20px;
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.58);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            box-shadow: 0 6px 16px rgba(180, 83, 9, 0.08);
+            text-align: center;
+            min-width: 112px;
+        }
+
+        .stat-chip strong {
+            display: block;
+            font-size: 1.3rem;
+            color: var(--gold-deep);
+            font-weight: 700;
+        }
+
+        .stat-chip span {
+            font-size: 0.78rem;
+            color: var(--ink-muted);
+            font-weight: 600;
+        }
+
+        /* Main 3-Column Player Studio */
+        .main-content {
+            display: grid;
+            grid-template-columns: 300px minmax(340px, 1.15fr) 340px;
+            gap: 20px;
+            align-items: stretch;
+            margin-bottom: 32px;
+        }
+
+        .panel {
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 500px;
+            max-height: 590px;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+            gap: 10px;
+        }
+
+        .panel-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--ink-primary);
+        }
+
+        .panel-title i {
+            color: var(--gold-rich);
+        }
+
+        .count-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.65);
+            color: var(--gold-deep);
+            border: 1px solid rgba(217, 119, 6, 0.22);
+        }
+
+        /* Search Box inside Panels */
+        .search-wrap {
+            position: relative;
+            margin-bottom: 12px;
+        }
+
+        .search-wrap i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--ink-muted);
+            font-size: 0.85rem;
+            pointer-events: none;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 9px 12px 9px 34px;
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.82);
+            background: rgba(255, 255, 255, 0.56);
+            color: var(--ink-primary);
+            font-family: inherit;
+            font-size: 0.86rem;
+            outline: none;
+            transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+        }
+
+        .search-input::placeholder {
+            color: var(--ink-muted);
+        }
+
+        .search-input:focus {
+            border-color: var(--gold-bright);
+            background: rgba(255, 255, 255, 0.84);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.16);
+        }
+
+        /* Scrollable Lists */
+        .scroll-list {
+            list-style: none;
+            overflow-y: auto;
+            flex: 1;
+            padding-right: 4px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .scroll-list::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .scroll-list::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .scroll-list::-webkit-scrollbar-thumb {
+            background: rgba(180, 83, 9, 0.25);
+            border-radius: 999px;
+        }
+
+        .playlist-item,
+        .song-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 10px 13px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.38);
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            color: var(--ink-secondary);
+        }
+
+        .playlist-item:hover,
+        .song-item:hover {
+            background: rgba(255, 255, 255, 0.72);
+            border-color: rgba(255, 255, 255, 0.92);
+            color: var(--ink-primary);
+            transform: translateX(2px);
+        }
+
+        .playlist-item.selected,
+        .song-item.selected {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.28), rgba(255, 255, 255, 0.78));
+            border-color: rgba(217, 119, 6, 0.55);
+            color: var(--ink-primary);
+            box-shadow: 0 6px 18px rgba(180, 83, 9, 0.14);
+        }
+
+        .playlist-name {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .playlist-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(180, 83, 9, 0.28);
+            flex-shrink: 0;
+        }
+
+        .playlist-item.selected .playlist-dot {
+            background: var(--gold-rich);
+            box-shadow: 0 0 10px var(--gold-bright);
+        }
+
+        .track-count {
+            font-size: 0.76rem;
+            font-weight: 700;
+            color: var(--gold-deep);
+            background: rgba(255, 255, 255, 0.65);
+            padding: 2px 8px;
+            border-radius: 999px;
+            flex-shrink: 0;
+        }
+
+        .song-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+            flex: 1;
+        }
+
+        .song-thumb {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            background: #fef3c7;
+        }
+
+        .song-name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-weight: 600;
+        }
+
+        .eq-bars {
+            display: none;
+            align-items: flex-end;
+            gap: 2px;
+            height: 14px;
+            flex-shrink: 0;
+        }
+
+        .song-item.selected .eq-bars {
+            display: flex;
+        }
+
+        .eq-bars span {
+            width: 3px;
+            background: var(--gold-deep);
+            border-radius: 2px;
+            animation: eqPulse 0.9s ease-in-out infinite alternate;
+        }
+
+        .eq-bars span:nth-child(2) { animation-delay: 0.25s; }
+        .eq-bars span:nth-child(3) { animation-delay: 0.5s; }
+
+        .eq-bars.paused span {
+            animation-play-state: paused;
+            height: 4px !important;
+        }
+
+        @keyframes eqPulse {
+            0% { height: 4px; }
+            100% { height: 14px; }
+        }
+
+        /* Center Media Player */
+        .media-player {
+            justify-content: space-between;
+            background: linear-gradient(155deg, rgba(255, 253, 242, 0.82) 0%, rgba(254, 240, 138, 0.52) 100%);
+        }
+
+        .media-player-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+            justify-content: center;
+            gap: 14px;
+            padding: 6px 0;
+        }
+
+        .artwork-frame {
+            position: relative;
+            width: 222px;
+            height: 222px;
+            border-radius: 24px;
+            padding: 6px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(251, 191, 36, 0.45));
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 22px 42px rgba(180, 83, 9, 0.22);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .artwork-frame.playing {
+            box-shadow: 0 24px 50px rgba(217, 119, 6, 0.34), 0 0 36px rgba(251, 191, 36, 0.35);
+            transform: scale(1.02);
+        }
+
+        .album-art {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 18px;
+            display: block;
+            background: #fef3c7;
+        }
+
+        .now-playing-meta {
+            width: 100%;
+            max-width: 380px;
+        }
+
+        .playlist-tag {
+            display: inline-block;
+            font-size: 0.74rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gold-deep);
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(217, 119, 6, 0.28);
+            padding: 3px 12px;
+            border-radius: 999px;
+            margin-bottom: 8px;
+        }
+
+        #song-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--ink-primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.2;
+        }
+
+        /* Custom Progress & Controls */
+        .player-controls-wrap {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 4px;
+        }
+
+        .progress-area {
+            width: 100%;
+        }
+
+        .seek-bar {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 999px;
+            background: rgba(180, 83, 9, 0.18);
+            outline: none;
+            cursor: pointer;
+        }
+
+        .seek-bar::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--gold-rich);
+            box-shadow: 0 0 10px var(--gold-glow);
+            cursor: pointer;
+            border: 2px solid #fff;
+        }
+
+        .time-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.76rem;
+            font-weight: 600;
+            color: var(--ink-muted);
+            margin-top: 6px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .transport-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        .ctrl-btn {
+            background: rgba(255, 255, 255, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            color: var(--ink-primary);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px rgba(180, 83, 9, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .ctrl-btn:hover {
+            background: #ffffff;
+            color: var(--gold-deep);
+            transform: scale(1.06);
+        }
+
+        .ctrl-btn.active {
+            color: #ffffff;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            border-color: rgba(255, 255, 255, 0.7);
+        }
+
+        .ctrl-btn.play-main {
+            width: 58px;
+            height: 58px;
+            font-size: 1.25rem;
+            color: #ffffff;
+            background: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);
+            border: 2px solid rgba(255, 255, 255, 0.75);
+            box-shadow: 0 12px 26px rgba(180, 83, 9, 0.34);
+        }
+
+        .ctrl-btn.play-main:hover {
+            transform: scale(1.08);
+            box-shadow: 0 14px 32px rgba(180, 83, 9, 0.45);
+        }
+
+        .secondary-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding-top: 4px;
+        }
+
+        .volume-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--ink-secondary);
+            font-size: 0.85rem;
+        }
+
+        .volume-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 84px;
+            height: 4px;
+            border-radius: 999px;
+            background: rgba(180, 83, 9, 0.22);
+            outline: none;
+            cursor: pointer;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gold-deep);
+            border: 1.5px solid #fff;
+            cursor: pointer;
+        }
+
+        .yt-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #b91c1c;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(220, 38, 38, 0.25);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .yt-link:hover {
+            background: #dc2626;
+            color: #ffffff;
+        }
+
+        .yt-link.hidden {
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        #audio-player {
+            display: none;
+        }
+
+        /* App Features Section (3x3 Mesmerizing Frosted Gold Grid) */
+        .features-section {
+            margin-bottom: 32px;
+        }
+
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 16px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+
+        .section-head h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: var(--ink-primary);
+        }
+
+        .section-head p {
+            color: var(--ink-secondary);
+            font-size: 0.95rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .feature-card {
+            position: relative;
+            border-radius: var(--radius-md);
+            padding: 22px;
+            background: var(--glass-bg-card);
+            overflow: hidden;
+            transition: transform 0.28s ease, box-shadow 0.28s ease, background 0.28s ease;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+            transform: skewX(-20deg);
+            transition: left 0.65s ease;
+            pointer-events: none;
+        }
+
+        .feature-card:hover::before {
+            left: 140%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: var(--glass-bg-hover);
+            box-shadow: 0 22px 44px rgba(180, 83, 9, 0.2), inset 0 1px 1px #ffffff;
+        }
+
+        .feature-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: #ffffff;
+            background: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);
+            border: 1px solid rgba(255, 255, 255, 0.65);
+            box-shadow: 0 8px 18px rgba(180, 83, 9, 0.24);
+        }
+
+        .feature-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 4px 10px;
+            border-radius: 999px;
+            color: var(--gold-deep);
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(217, 119, 6, 0.22);
+        }
+
+        .feature-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.38rem;
+            font-weight: 700;
+            color: var(--ink-primary);
+            margin-bottom: 6px;
+        }
+
+        .feature-card p {
+            font-size: 0.88rem;
+            color: var(--ink-secondary);
+            line-height: 1.55;
+        }
+
+        /* AdSense Container (preserved) */
+        .ad-container {
+            display: none;
+        }
+
         .ad-section {
-            background-color: #fff; padding: 5px; border-radius: 8px; text-align: center;
-            width: 320px; min-height: 100px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 5px;
+            border-radius: 8px;
+            text-align: center;
+            width: 320px;
+            min-height: 100px;
         }
-        .ad-section p { margin-top: 20px; }
 
-        footer { text-align: center; padding: 20px 0; background-color: #FFF085; color: #000000; border-radius: 8px; margin-top: 20px; }
-        .footer-links { margin-bottom: 15px; }
-        .footer-links a { color: #333; text-decoration: none; margin: 0 10px; font-size: 0.9em; }
-        .footer-links a:hover { text-decoration: underline; }
-        .footer-links span { color: #666; }
-
-        @media (max-width: 1024px) {
-            .main-content { flex-direction: column; }
-            .media-player, .playlists, .songs-in-playlist { width: 100%; margin-bottom: 15px; }
-            .playlists ul, .songs-in-playlist ul { max-height: 300px; }
-            .album-art { width: 120px; height: 120px; }
-            .header-content { flex-direction: column; align-items: center; }
-            .site-branding { flex-direction: column; align-items: center; }
-            .site-text { align-items: center; margin-bottom: 10px; }
-            .social-links { margin-top: 10px; }
+        /* Footer */
+        footer {
+            border-radius: var(--radius-lg);
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--ink-secondary);
         }
-        @media (max-width: 600px) {
-            .container { padding: 10px; }
-            .site-logo { width: 70px; height: 70px; }
-            .site-text h1 { font-size: 2em; }
-            .site-text p { font-size: 1em; }
-            .playlists ul, .songs-in-playlist ul { max-height: 200px; }
-            .ad-section { width: 100%; }
-            .media-player audio { width: 100%; }
+
+        .footer-links {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .footer-links a {
+            color: var(--ink-primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-deep);
+        }
+
+        .footer-links span {
+            color: rgba(180, 83, 9, 0.35);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 28px 12px;
+            color: var(--ink-muted);
+            font-size: 0.88rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1120px) {
+            .main-content {
+                grid-template-columns: 1fr 1fr;
+            }
+            .panel {
+                min-height: 360px;
+                max-height: 440px;
+            }
+            .panel.media-player {
+                grid-column: 1 / -1;
+                order: -1;
+                min-height: auto;
+                max-height: none;
+            }
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                padding: 14px 12px 28px;
+            }
+            .header-content {
+                justify-content: center;
+                text-align: center;
+            }
+            .site-branding {
+                flex-direction: column;
+            }
+            .header-actions {
+                justify-content: center;
+            }
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            .artwork-frame {
+                width: 180px;
+                height: 180px;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            footer {
+                justify-content: center;
+                text-align: center;
+            }
+        }
+
+        /* Interactive Feature Card States */
+        .feature-card.interactive {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feature-card.app-only {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feature-cta {
+            margin-top: auto;
+            padding-top: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--gold-deep);
+        }
+
+        .feature-cta i {
+            transition: transform 0.2s ease;
+        }
+
+        .feature-card:hover .feature-cta i {
+            transform: translateX(4px);
+        }
+
+        /* Frosted Golden Tool Modal */
+        .tool-modal-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(69, 26, 3, 0.36);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+        }
+
+        .tool-modal-backdrop.open {
+            display: flex;
+        }
+
+        .tool-modal {
+            width: 100%;
+            max-width: 880px;
+            max-height: 90vh;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(145deg, rgba(255, 253, 242, 0.92), rgba(254, 240, 138, 0.84));
+            backdrop-filter: blur(28px) saturate(185%);
+            -webkit-backdrop-filter: blur(28px) saturate(185%);
+            border: 1.5px solid rgba(255, 255, 255, 0.92);
+            box-shadow: 0 30px 70px rgba(120, 53, 15, 0.32), inset 0 1px 1px #ffffff;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            animation: modalPop 0.24s ease-out;
+        }
+
+        @keyframes modalPop {
+            from { opacity: 0; transform: translateY(12px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .tool-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 22px;
+            border-bottom: 1px solid rgba(180, 83, 9, 0.14);
+            gap: 12px;
+        }
+
+        .tool-modal-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--ink-primary);
+        }
+
+        .tool-modal-title i {
+            color: var(--gold-rich);
+        }
+
+        .tool-close-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.65);
+            color: var(--ink-primary);
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .tool-close-btn:hover {
+            background: #ffffff;
+            color: var(--gold-deep);
+        }
+
+        .tool-tabs {
+            display: flex;
+            gap: 8px;
+            padding: 10px 22px;
+            overflow-x: auto;
+            border-bottom: 1px solid rgba(180, 83, 9, 0.1);
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        .tool-tab-btn {
+            padding: 7px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(217, 119, 6, 0.2);
+            background: rgba(255, 255, 255, 0.65);
+            color: var(--ink-secondary);
+            font-family: inherit;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .tool-tab-btn.active {
+            background: linear-gradient(135deg, #f59e0b, #b45309);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 4px 12px rgba(180, 83, 9, 0.25);
+        }
+
+        .tool-modal-body {
+            padding: 22px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        /* Shared Tool Form & Card Styles */
+        .tool-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .tool-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .tool-box {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: var(--radius-sm);
+            padding: 14px 16px;
+            box-shadow: 0 4px 14px rgba(180, 83, 9, 0.06);
+        }
+
+        .tool-box label {
+            display: block;
+            font-size: 0.76rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--ink-muted);
+            margin-bottom: 5px;
+        }
+
+        .tool-input,
+        .tool-select {
+            width: 100%;
+            padding: 9px 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(217, 119, 6, 0.28);
+            background: rgba(255, 255, 255, 0.86);
+            color: var(--ink-primary);
+            font-family: inherit;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .tool-input:focus,
+        .tool-select:focus {
+            border-color: var(--gold-bright);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.16);
+        }
+
+        .tool-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 999px;
+            border: none;
+            background: linear-gradient(135deg, #f59e0b, #b45309);
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 0.88rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 6px 16px rgba(180, 83, 9, 0.24);
+            transition: transform 0.2s ease;
+        }
+
+        .tool-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .tool-btn.secondary {
+            background: rgba(255, 255, 255, 0.78);
+            color: var(--ink-primary);
+            border: 1px solid rgba(217, 119, 6, 0.3);
+            box-shadow: none;
+        }
+
+        /* Mala Jaap Ring */
+        .mala-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            text-align: center;
+        }
+
+        .mala-ring-box {
+            position: relative;
+            width: 210px;
+            height: 210px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .mala-ring-box svg {
+            transform: rotate(-90deg);
+            width: 100%;
+            height: 100%;
+        }
+
+        .mala-center {
+            position: absolute;
+            inset: 18px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #fffbeb, #fde68a);
+            border: 2px solid rgba(255, 255, 255, 0.95);
+            box-shadow: 0 12px 28px rgba(180, 83, 9, 0.2), inset 0 2px 6px rgba(255, 255, 255, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.1s ease;
+        }
+
+        .mala-ring-box:active .mala-center {
+            transform: scale(0.96);
+        }
+
+        .mala-count {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.1rem;
+            font-weight: 700;
+            color: var(--gold-deep);
+            line-height: 1;
+        }
+
+        .mala-sub {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--ink-muted);
+            margin-top: 4px;
+        }
+
+        /* Calendar Grid */
+        .cal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+            gap: 10px;
+        }
+
+        .cal-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
+        }
+
+        .cal-dow {
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--ink-muted);
+            padding: 4px 0;
+        }
+
+        .cal-cell {
+            min-height: 54px;
+            border-radius: 10px;
+            padding: 6px;
+            background: rgba(255, 255, 255, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--ink-primary);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .cal-cell.today {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: #ffffff;
+            border-color: #ffffff;
+        }
+
+        .cal-cell.fest {
+            border-color: rgba(217, 119, 6, 0.55);
+            background: rgba(254, 240, 138, 0.75);
+        }
+
+        .cal-tag {
+            font-size: 0.65rem;
+            line-height: 1.1;
+            color: var(--gold-deep);
+            font-weight: 700;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .cal-cell.today .cal-tag {
+            color: #fffbeb;
+        }
+
+        /* Kundli & Poster */
+        .kundli-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 16px;
+            align-items: start;
+        }
+
+        .poster-preview-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        #poster-canvas {
+            width: 100%;
+            max-width: 340px;
+            border-radius: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 14px 32px rgba(180, 83, 9, 0.22);
+        }
+
+        @media (max-width: 700px) {
+            .tool-grid-2,
+            .tool-grid-3,
+            .kundli-layout {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="ambient-backdrop">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    <div class="ambient-pattern"></div>
+
     <div class="container">
-        <header>
+        <header class="glass">
             <div class="header-content">
                 <div class="site-branding">
-                    <img src="flute_channel.png" alt="Bhajjoray Logo" class="site-logo">
+                    <div class="logo-ring">
+                        <img src="flute_channel.png" alt="Bhajjoray Logo" class="site-logo">
+                    </div>
                     <div class="site-text">
                         <h1>Bhajjoray</h1>
                         <p>Sound of Bhakti</p>
                     </div>
                 </div>
-                <div class="social-links">
-			<a href="https://play.google.com/store/apps/details?id=com.bhajjoray.bhajjoray" 
-   			target="_blank" rel="noopener" class="play-badge">
-  			<img src="/images/Google_Play_icon.png">
-			<span>Download App</span>
 
-		</a>	              
-		<a href="https://www.facebook.com/profile.php?id=61578006909232">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo"
-                             onerror="this.alt='Facebook';this.src='https://placehold.co/30x30/1877F2/ffffff?text=F'">
+                <div class="header-actions">
+                    <a href="https://play.google.com/store/apps/details?id=com.bhajjoray.bhajjoray"
+                       target="_blank" rel="noopener" class="play-badge">
+                        <img src="images/Google_Play_icon.png" alt="Google Play"
+                             onerror="this.style.display='none'">
+                        <span>Download App</span>
                     </a>
-                    <a href="https://www.instagram.com/bhajjoray/">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo"
-                             onerror="this.alt='Instagram';this.src='https://placehold.co/30x30/C13584/ffffff?text=I'">
-                    </a>
-                    <a href="https://www.youtube.com/@Bhajjoray">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube Logo"
-                             onerror="this.alt='YouTube';this.src='https://placehold.co/30x30/FF0000/ffffff?text=Y'">
-                    </a>
-                    <a href="https://x.com/bhajjoray">
-			<img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.png" alt="X Logo" onerror="this.alt='X';this.src='https://placehold.co/30x30/000000/ffffff?text=X'"> 
-                    </a>
+
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61578006909232" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/bhajjoray/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@Bhajjoray" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube" title="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://x.com/bhajjoray" target="_blank" rel="noopener" class="social-btn" aria-label="X" title="X">
+                            <i class="fab fa-x-twitter"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </header>
 
-	<div class="devotion-line">
-  <p style="font-family: Arial, sans-serif; font-size: 25px;">Experience peace, devotion, and spirituality through timeless bhakti songs</p>
-<p style="font-family: Arial, sans-serif; font-size: 16px;">Download the Bhajjoray App from Google Play Store. Full Music Player Controls, Create Favorite Playlist,New song intimation, Mala Jaap and more.....</p>
-
-</div>
-
-
-
-        <div class="main-content">
-            <div class="media-player">
-                <div class="media-player-content">
-                    <img id="album-art" class="album-art" src="flute_channel.png" alt="Default Album Art">
-                    <h2 id="song-title">Select song from playlist</h2>
-                    <div class="player-controls">
-                        <audio id="audio-player" controls controlsList="nodownload">
-                            <source id="audio-source" src="#" type="audio/mpeg">
-                            Your browser does support the audio element.
-                        </audio>
-                        <button id="repeat-button" class="repeat-button" title="Toggle Repeat">
-                            <i class="fas fa-redo"></i>
-                        </button>
-                    </div>
+        <section class="hero-banner glass">
+            <div class="hero-copy">
+                <div class="hero-pill">
+                    <i class="fas fa-om"></i>
+                    <span>Sacred Bhajans, Panchang, Gita &amp; Daily Sadhana</span>
+                </div>
+                <h2>Experience peace, devotion, and spirituality through timeless bhakti songs</h2>
+                <p>Listen right here on the web or explore the complete devotional companion on the Bhajjoray Android app.</p>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-chip">
+                    <strong id="stat-playlists">—</strong>
+                    <span>Playlists</span>
+                </div>
+                <div class="stat-chip">
+                    <strong id="stat-songs">—</strong>
+                    <span>Sacred Tracks</span>
                 </div>
             </div>
+        </section>
 
-            <div class="playlists">
-                <h2>Playlists</h2>
-                <ul id="playlist-list"></ul>
-            </div>
+        <main class="main-content">
+            <!-- Playlists Column -->
+            <section class="panel glass playlists">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <i class="fas fa-list-ul"></i>
+                        <span>Playlists</span>
+                    </div>
+                    <span class="count-badge" id="playlist-count">0</span>
+                </div>
+                <div class="search-wrap">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="playlist-search" class="search-input" placeholder="Search deities &amp; playlists...">
+                </div>
+                <ul id="playlist-list" class="scroll-list"></ul>
+            </section>
 
-            <div class="songs-in-playlist">
-                <h2>Songs in Playlist</h2>
-                <ul id="song-list">
-                    <li>Select a playlist to see songs.</li>
+            <!-- Center Frosted Gold Media Player -->
+            <section class="panel glass media-player">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <i class="fas fa-music"></i>
+                        <span>Now Playing</span>
+                    </div>
+                    <span class="count-badge" id="player-status">Ready</span>
+                </div>
+
+                <div class="media-player-content">
+                    <div class="artwork-frame" id="artwork-frame">
+                        <img id="album-art" class="album-art" src="flute_channel.png" alt="Default Album Art">
+                    </div>
+
+                    <div class="now-playing-meta">
+                        <span class="playlist-tag" id="current-playlist-tag">Select a playlist</span>
+                        <h2 id="song-title">Select song from playlist</h2>
+                    </div>
+
+                    <audio id="audio-player" controlsList="nodownload">
+                        <source id="audio-source" src="" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+
+                    <div class="player-controls-wrap">
+                        <div class="progress-area">
+                            <input type="range" id="seek-bar" class="seek-bar" value="0" min="0" max="100" step="0.1" aria-label="Seek audio">
+                            <div class="time-row">
+                                <span id="current-time">0:00</span>
+                                <span id="total-duration">0:00</span>
+                            </div>
+                        </div>
+
+                        <div class="transport-row">
+                            <button id="prev-button" class="ctrl-btn" title="Previous Song" aria-label="Previous Song">
+                                <i class="fas fa-backward-step"></i>
+                            </button>
+                            <button id="play-pause-button" class="ctrl-btn play-main" title="Play / Pause" aria-label="Play or Pause">
+                                <i class="fas fa-play" id="play-pause-icon"></i>
+                            </button>
+                            <button id="next-button" class="ctrl-btn" title="Next Song" aria-label="Next Song">
+                                <i class="fas fa-forward-step"></i>
+                            </button>
+                            <button id="repeat-button" class="ctrl-btn" title="Toggle Repeat" aria-label="Toggle Repeat">
+                                <i class="fas fa-redo"></i>
+                            </button>
+                        </div>
+
+                        <div class="secondary-row">
+                            <div class="volume-wrap">
+                                <i class="fas fa-volume-high" id="volume-icon"></i>
+                                <input type="range" id="volume-slider" class="volume-slider" min="0" max="1" step="0.02" value="1" aria-label="Volume">
+                            </div>
+                            <a id="youtube-link" href="#" target="_blank" rel="noopener" class="yt-link hidden">
+                                <i class="fab fa-youtube"></i>
+                                <span>Watch Video</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Songs Column -->
+            <section class="panel glass songs-in-playlist">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <i class="fas fa-compact-disc"></i>
+                        <span>Songs</span>
+                    </div>
+                    <span class="count-badge" id="song-count">0</span>
+                </div>
+                <div class="search-wrap">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="song-search" class="search-input" placeholder="Filter songs in playlist...">
+                </div>
+                <ul id="song-list" class="scroll-list">
+                    <li class="empty-state">Select a playlist to see songs.</li>
                 </ul>
-            </div>
-        </div>
+            </section>
+        </main>
 
-        <!-- ✅ Visible AdSense unit (kept simple) -->
+        <!-- Updated App Features Showcase -->
+        <section class="features-section">
+            <div class="section-head">
+                <div>
+                    <h2>Bhajjoray Features</h2>
+                    <p>Use our interactive devotional tools right here on the web — plus Bhagavad Gita &amp; Vrat Katha in the app</p>
+                </div>
+            </div>
+            <div class="features-grid">
+                <a href="https://play.google.com/store/apps/details?id=com.bhajjoray.bhajjoray" target="_blank" rel="noopener" class="feature-card glass app-only">
+                    <div class="feature-top">
+                        <div class="feature-icon"><i class="fas fa-book-open"></i></div>
+                        <span class="feature-tag">In Android App</span>
+                    </div>
+                    <h3>Bhagavad Gita</h3>
+                    <p>Read and reflect on timeless shlokas with chapter-wise teachings and spiritual guidance for everyday life.</p>
+                    <span class="feature-cta">Get on Google Play <i class="fas fa-arrow-up-right-from-square"></i></span>
+                </a>
+
+                <a href="https://play.google.com/store/apps/details?id=com.bhajjoray.bhajjoray" target="_blank" rel="noopener" class="feature-card glass app-only">
+                    <div class="feature-top">
+                        <div class="feature-icon"><i class="fas fa-hands-praying"></i></div>
+                        <span class="feature-tag">In Android App</span>
+                    </div>
+                    <h3>Vrat &amp; Katha</h3>
+                    <p>Complete vrat vidhi, fasting guidelines, and sacred kathas so every auspicious fast is observed with devotion.</p>
+                    <span class="feature-cta">Get on Google Play <i class="fas fa-arrow-up-right-from-square"></i></span>
+                </a>
+
+                <div class="feature-card glass interactive" data-tool="calendar" role="button" tabindex="0">
+                    <div class="feature-top">
+                        <div class="feature-icon"><i class="fas fa-calendar-days"></i></div>
+                        <span class="feature-tag">Festivals</span>
+                    </div>
+                    <h3>Hindu Calendar</h3>
+                    <p>Stay aligned with Ekadashi, Purnima, Amavasya, and major Sanatan festivals throughout the year.</p>
+                    <span class="feature-cta">Open Calendar <i class="fas fa-arrow-right"></i></span>
+                </div>
+
+                <div class="feature-card glass interactive" data-tool="panchang" role="button" tabindex="0">
+                    <div class="feature-top">
+                        <div class="feature-icon"><i class="fas fa-sun"></i></div>
+                        <span class="feature-tag">Daily</span>
+                    </div>
+                    <h3>Daily Panchang</h3>
+                    <p>Check Tithi, Nakshatra, Yoga, Karana, Rahu Kaal, and Shubh Muhurat for any date.</p>
+                    <span class="feature-cta">View Panchang <i class="fas fa-arrow-right"></i></span>
+                </div>
+
+                <div class="feature-card glass interactive" data-tool="shop" role="button" tabindex="0">
+                    <div class="feature-top">
+                        <div class="feature-icon"><i class="fas fa-store"></i></div>
+                        <span class="feature-tag">Local</span>
+                    </div>
+                    <h3>Find Shop</h3>
+                    <p>Discover nearby puja samagri stores, temple essentials, idols, and spiritual supplies effortlessly.</p>
+                    <span class="feature-cta">Find Nearby <i class="fas fa-arrow-right"></i></span>
+                </div>
+
+                <div class="feature-card glass interactive" data-tool="organiser" role="button" tabindex="0">
+                    <div class="feature-top">
+                        <div class="feature-icon"><i class="fas fa-users"></i></div>
+                        <span class="feature-tag">Community</span>
+                    </div>
+                    <h3>Bhajan Organiser</h3>
+                    <p>Plan, schedule, and coordinate bhajan sandhyas, kirtan gatherings, and satsangs with ease.</p>
+                    <span class="feature-cta">Open Organiser <i class="fas fa-arrow-right"></i></span>
+                </div>
+
+                <div class="feature-card glass interactive" data-tool="kundli" role="button" tabindex="0">
+                    <div class="feature-top">
+                        <div class="feature-icon"><i class="fas fa-star-and-crescent"></i></div>
+                        <span class="feature-tag">Astrology</span>
+                    </div>
+                    <h3>Birth Chart</h3>
+                    <p>Generate your Vedic Janam Kundli with planetary placements and Lagna chart.</p>
+                    <span class="feature-cta">Generate Kundli <i class="fas fa-arrow-right"></i></span>
+                </div>
+
+                <div class="feature-card glass interactive" data-tool="malajaap" role="button" tabindex="0">
+                    <div class="feature-top">
+                        <div class="feature-icon"><i class="fas fa-spa"></i></div>
+                        <span class="feature-tag">Meditation</span>
+                    </div>
+                    <h3>Mala Jaap</h3>
+                    <p>Count your 108-bead mantra jaap anywhere with gentle chimes, calm focus, and mala tracking.</p>
+                    <span class="feature-cta">Start Chanting <i class="fas fa-arrow-right"></i></span>
+                </div>
+
+                <div class="feature-card glass interactive" data-tool="poster" role="button" tabindex="0">
+                    <div class="feature-top">
+                        <div class="feature-icon"><i class="fas fa-image"></i></div>
+                        <span class="feature-tag">Share</span>
+                    </div>
+                    <h3>Today's Poster</h3>
+                    <p>Create and download today's devotional poster with deity blessings and shubh vichar.</p>
+                    <span class="feature-cta">Create Poster <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visible AdSense unit (kept intact) -->
         <div class="ad-container">
             <div class="ad-section">
                 <h3>Google Ad Section</h3>
                 <p>Your advertisement could be here!</p>
-
-                <!-- Replace data-ad-slot with your real slot ID from AdSense -->
                 <ins class="adsbygoogle"
-     		style="display:block"
-     		data-ad-client="ca-pub-1067475344414814"
-     		data-ad-slot="6818092775"
-     		data-ad-format="auto"
-     		data-full-width-responsive="true"></ins>
+                    style="display:block"
+                    data-ad-client="ca-pub-1067475344414814"
+                    data-ad-slot="6818092775"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
                 <script>
                     (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
             </div>
         </div>
 
-        <footer>
+        <footer class="glass">
+            <p>&copy; Bhajjoray <span>|</span> query@bhajjoray.com</p>
             <div class="footer-links">
                 <a href="privacy.html">Privacy Policy</a>
                 <span>|</span>
                 <a href="terms.html">Terms of Service</a>
             </div>
-            <p>© Bhajjoray <span>|</span> query@bhajjoray.com</p>
         </footer>
+    </div>
+
+    <!-- Interactive Devotional Tools Modal -->
+    <div id="tool-modal-backdrop" class="tool-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="tool-modal-heading">
+        <div class="tool-modal">
+            <div class="tool-modal-header">
+                <div class="tool-modal-title" id="tool-modal-heading">
+                    <i class="fas fa-spa" id="tool-modal-icon"></i>
+                    <span id="tool-modal-title-text">Bhajjoray Tool</span>
+                </div>
+                <button id="tool-close-btn" class="tool-close-btn" aria-label="Close modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="tool-tabs" id="tool-tabs">
+                <button class="tool-tab-btn" data-tool="calendar">Hindu Calendar</button>
+                <button class="tool-tab-btn" data-tool="panchang">Daily Panchang</button>
+                <button class="tool-tab-btn" data-tool="shop">Find Shop</button>
+                <button class="tool-tab-btn" data-tool="organiser">Bhajan Organiser</button>
+                <button class="tool-tab-btn" data-tool="kundli">Birth Chart</button>
+                <button class="tool-tab-btn" data-tool="malajaap">Mala Jaap</button>
+                <button class="tool-tab-btn" data-tool="poster">Today's Poster</button>
+            </div>
+            <div class="tool-modal-body" id="tool-modal-body"></div>
+        </div>
     </div>
 
     <script>
     document.addEventListener('DOMContentLoaded', async () => {
+        const playlistList = document.getElementById('playlist-list');
+        const songList = document.getElementById('song-list');
+        const audioPlayer = document.getElementById('audio-player');
+        const audioSource = document.getElementById('audio-source');
+        const songTitle = document.getElementById('song-title');
+        const albumArt = document.getElementById('album-art');
+        const artworkFrame = document.getElementById('artwork-frame');
+        const currentPlaylistTag = document.getElementById('current-playlist-tag');
+        const playerStatus = document.getElementById('player-status');
+
+        const playPauseBtn = document.getElementById('play-pause-button');
+        const playPauseIcon = document.getElementById('play-pause-icon');
+        const prevBtn = document.getElementById('prev-button');
+        const nextBtn = document.getElementById('next-button');
+        const repeatBtn = document.getElementById('repeat-button');
+
+        const seekBar = document.getElementById('seek-bar');
+        const currentTimeEl = document.getElementById('current-time');
+        const totalDurationEl = document.getElementById('total-duration');
+        const volumeSlider = document.getElementById('volume-slider');
+        const volumeIcon = document.getElementById('volume-icon');
+        const youtubeLink = document.getElementById('youtube-link');
+
+        const playlistSearch = document.getElementById('playlist-search');
+        const songSearch = document.getElementById('song-search');
+        const playlistCount = document.getElementById('playlist-count');
+        const songCount = document.getElementById('song-count');
+        const statPlaylists = document.getElementById('stat-playlists');
+        const statSongs = document.getElementById('stat-songs');
+
         let playlists = {};
+        let currentPlaylistId = null;
+        let currentSongIndex = -1;
+        let isSeeking = false;
+
+        function formatTime(seconds) {
+            if (!isFinite(seconds) || seconds < 0) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function setPlayingUI(isPlaying) {
+            playPauseIcon.className = isPlaying ? 'fas fa-pause' : 'fas fa-play';
+            artworkFrame.classList.toggle('playing', isPlaying);
+            playerStatus.textContent = isPlaying ? 'Playing' : 'Paused';
+            document.querySelectorAll('.eq-bars').forEach(el => {
+                el.classList.toggle('paused', !isPlaying);
+            });
+        }
+
         try {
             const response = await fetch('playlistsn.json');
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             playlists = await response.json();
         } catch (error) {
-            console.error("Could not fetch playlist data:", error);
-            const playlistList = document.getElementById('playlist-list');
-            playlistList.innerHTML = '<li>Error loading playlists.</li>';
+            console.error('Could not fetch playlist data:', error);
+            playlistList.innerHTML = '<li class="empty-state">Error loading playlists.</li>';
             return;
         }
 
-        const playlistList = document.getElementById('playlist-list');
-        const songList = document.getElementById('song-list');
-        const audioPlayer = document.getElementById('audio-player');
-        const audioSource = document.getElementById('audio-source');
-        const repeatButton = document.getElementById('repeat-button');
-        const songTitle = document.getElementById('song-title');
-        const albumArt = document.getElementById('album-art');
-
-        let currentPlaylistId = null;
-        let currentSongIndex = -1;
-
         const playlistNames = Object.keys(playlists);
-        playlistList.innerHTML = playlistNames.map(name => `<li data-playlist="${name}">${name}</li>`).join('');
-        const playlistItems = document.querySelectorAll('#playlist-list li');
+        const totalTracks = playlistNames.reduce((sum, name) => sum + (playlists[name]?.length || 0), 0);
+        statPlaylists.textContent = playlistNames.length;
+        statSongs.textContent = totalTracks;
+        playlistCount.textContent = playlistNames.length;
 
-        repeatButton.addEventListener('click', () => {
-            audioPlayer.loop = !audioPlayer.loop;
-            repeatButton.classList.toggle('active', audioPlayer.loop);
-        });
+        function renderPlaylists(filterText = '') {
+            const q = filterText.trim().toLowerCase();
+            const filtered = playlistNames.filter(name => name.toLowerCase().includes(q));
 
-        async function playSong(playlistId, songIndex) {
-            const songs = playlists[playlistId] || [{ title: "No songs available", url: "#", image: "default.jpg" }];
+            if (filtered.length === 0) {
+                playlistList.innerHTML = '<li class="empty-state">No matching playlists.</li>';
+                return;
+            }
+
+            playlistList.innerHTML = filtered.map(name => {
+                const count = playlists[name]?.length || 0;
+                const selectedClass = name === currentPlaylistId ? 'selected' : '';
+                return `
+                    <li class="playlist-item ${selectedClass}" data-playlist="${name.replace(/"/g, '&quot;')}">
+                        <span class="playlist-name">
+                            <span class="playlist-dot"></span>
+                            <span>${name}</span>
+                        </span>
+                        <span class="track-count">${count}</span>
+                    </li>
+                `;
+            }).join('');
+
+            playlistList.querySelectorAll('.playlist-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const playlistId = item.getAttribute('data-playlist');
+                    selectPlaylist(playlistId, true);
+                });
+            });
+        }
+
+        function renderSongs(playlistId, filterText = '') {
+            const songs = playlists[playlistId] || [];
+            const q = filterText.trim().toLowerCase();
+            songCount.textContent = songs.length;
+
+            const indexedSongs = songs
+                .map((song, index) => ({ song, index }))
+                .filter(({ song }) => song.title.toLowerCase().includes(q));
+
+            if (indexedSongs.length === 0) {
+                songList.innerHTML = '<li class="empty-state">No songs found.</li>';
+                return;
+            }
+
+            songList.innerHTML = indexedSongs.map(({ song, index }) => {
+                const isSelected = playlistId === currentPlaylistId && index === currentSongIndex;
+                const pausedClass = audioPlayer.paused ? 'paused' : '';
+                return `
+                    <li class="song-item ${isSelected ? 'selected' : ''}" data-index="${index}">
+                        <div class="song-left">
+                            <img class="song-thumb" src="images/${encodeURIComponent(song.image)}" alt=""
+                                 onerror="this.src='flute_channel.png'">
+                            <span class="song-name">${song.title}</span>
+                        </div>
+                        <div class="eq-bars ${pausedClass}">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </li>
+                `;
+            }).join('');
+
+            songList.querySelectorAll('.song-item').forEach(songItem => {
+                songItem.addEventListener('click', () => {
+                    const index = parseInt(songItem.getAttribute('data-index'), 10);
+                    playSong(playlistId, index, true);
+                });
+            });
+        }
+
+        async function playSong(playlistId, songIndex, autoPlay = true) {
+            const songs = playlists[playlistId] || [];
+            if (!songs.length || !songs[songIndex]) return;
+
             const song = songs[songIndex];
+            currentPlaylistId = playlistId;
+            currentSongIndex = songIndex;
 
             audioSource.src = song.url;
             audioPlayer.load();
-            try { await audioPlayer.play(); } catch (error) { console.error("Playback failed:", error); }
 
             songTitle.textContent = song.title;
-            albumArt.src = `images/${song.image}`;
+            currentPlaylistTag.textContent = playlistId;
+            albumArt.src = `images/${encodeURIComponent(song.image)}`;
             albumArt.alt = `${song.title} Album Art`;
+            albumArt.onerror = () => { albumArt.src = 'flute_channel.png'; };
 
-            const songItems = songList.querySelectorAll('li');
-            songItems.forEach((item, index) => item.classList.toggle('selected', index === songIndex));
+            if (song.youtubeUrl && song.youtubeUrl.trim() !== '') {
+                youtubeLink.href = song.youtubeUrl;
+                youtubeLink.classList.remove('hidden');
+            } else {
+                youtubeLink.classList.add('hidden');
+            }
 
-            currentPlaylistId = playlistId;
-            currentSongIndex = songIndex;
+            seekBar.value = 0;
+            currentTimeEl.textContent = '0:00';
+            totalDurationEl.textContent = '0:00';
+
+            renderPlaylists(playlistSearch.value);
+            renderSongs(playlistId, songSearch.value);
+
+            if (autoPlay) {
+                try {
+                    await audioPlayer.play();
+                } catch (error) {
+                    console.error('Playback failed:', error);
+                    setPlayingUI(false);
+                }
+            } else {
+                playerStatus.textContent = 'Ready';
+            }
         }
 
-        audioPlayer.addEventListener('ended', () => {
-            if (!audioPlayer.loop && currentPlaylistId) {
-                const songs = playlists[currentPlaylistId];
-                let nextSongIndex = currentSongIndex + 1;
-                if (nextSongIndex >= songs.length) nextSongIndex = 0;
-                playSong(currentPlaylistId, nextSongIndex);
+        function selectPlaylist(playlistId, autoPlayFirst = false) {
+            currentPlaylistId = playlistId;
+            songSearch.value = '';
+            const songs = playlists[playlistId] || [];
+
+            if (songs.length > 0 && songs[0].url !== '#') {
+                playSong(playlistId, 0, autoPlayFirst);
+            } else {
+                currentSongIndex = -1;
+                renderPlaylists(playlistSearch.value);
+                renderSongs(playlistId);
+            }
+        }
+
+        // Transport Controls
+        playPauseBtn.addEventListener('click', async () => {
+            if (!audioSource.getAttribute('src')) {
+                if (playlistNames.length > 0) {
+                    selectPlaylist(playlistNames[0], true);
+                }
+                return;
+            }
+            if (audioPlayer.paused) {
+                try { await audioPlayer.play(); } catch (err) { console.error(err); }
+            } else {
+                audioPlayer.pause();
             }
         });
 
-        playlistItems.forEach(item => {
-            item.addEventListener('click', () => {
-                playlistItems.forEach(i => i.classList.remove('selected'));
-                item.classList.add('selected');
+        prevBtn.addEventListener('click', () => {
+            if (!currentPlaylistId) return;
+            const songs = playlists[currentPlaylistId] || [];
+            if (!songs.length) return;
+            const prevIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+            playSong(currentPlaylistId, prevIndex, true);
+        });
 
-                const playlistId = item.getAttribute('data-playlist');
-                const songs = playlists[playlistId] || [{ title: "No songs available", url: "#", image: "default.jpg" }];
-                songList.innerHTML = songs.map((song, index) => `<li data-index="${index}">${song.title}</li>`).join('');
+        nextBtn.addEventListener('click', () => {
+            if (!currentPlaylistId) return;
+            const songs = playlists[currentPlaylistId] || [];
+            if (!songs.length) return;
+            const nextIndex = (currentSongIndex + 1) % songs.length;
+            playSong(currentPlaylistId, nextIndex, true);
+        });
 
-                if (songs.length > 0 && songs[0].url !== "#") {
-                    playSong(playlistId, 0);
+        repeatBtn.addEventListener('click', () => {
+            audioPlayer.loop = !audioPlayer.loop;
+            repeatBtn.classList.toggle('active', audioPlayer.loop);
+        });
+
+        // Audio Events
+        audioPlayer.addEventListener('play', () => setPlayingUI(true));
+        audioPlayer.addEventListener('pause', () => setPlayingUI(false));
+
+        audioPlayer.addEventListener('loadedmetadata', () => {
+            totalDurationEl.textContent = formatTime(audioPlayer.duration);
+        });
+
+        audioPlayer.addEventListener('timeupdate', () => {
+            if (isSeeking || !isFinite(audioPlayer.duration) || audioPlayer.duration === 0) return;
+            const pct = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+            seekBar.value = pct;
+            currentTimeEl.textContent = formatTime(audioPlayer.currentTime);
+        });
+
+        seekBar.addEventListener('input', () => {
+            isSeeking = true;
+            if (isFinite(audioPlayer.duration)) {
+                currentTimeEl.textContent = formatTime((seekBar.value / 100) * audioPlayer.duration);
+            }
+        });
+
+        seekBar.addEventListener('change', () => {
+            if (isFinite(audioPlayer.duration)) {
+                audioPlayer.currentTime = (seekBar.value / 100) * audioPlayer.duration;
+            }
+            isSeeking = false;
+        });
+
+        volumeSlider.addEventListener('input', () => {
+            audioPlayer.volume = parseFloat(volumeSlider.value);
+            if (audioPlayer.volume === 0) {
+                volumeIcon.className = 'fas fa-volume-xmark';
+            } else if (audioPlayer.volume < 0.5) {
+                volumeIcon.className = 'fas fa-volume-low';
+            } else {
+                volumeIcon.className = 'fas fa-volume-high';
+            }
+        });
+
+        audioPlayer.addEventListener('ended', () => {
+            if (!audioPlayer.loop && currentPlaylistId) {
+                const songs = playlists[currentPlaylistId] || [];
+                if (!songs.length) return;
+                const nextSongIndex = (currentSongIndex + 1) % songs.length;
+                playSong(currentPlaylistId, nextSongIndex, true);
+            }
+        });
+
+        // Search filters
+        playlistSearch.addEventListener('input', () => renderPlaylists(playlistSearch.value));
+        songSearch.addEventListener('input', () => {
+            if (currentPlaylistId) renderSongs(currentPlaylistId, songSearch.value);
+        });
+
+        // Initialize with first playlist loaded (without autoplaying audio)
+        renderPlaylists();
+        if (playlistNames.length > 0) {
+            selectPlaylist(playlistNames[0], false);
+        }
+
+        // ============================================================
+        // Interactive Devotional Tools (7 Web-Enabled Features)
+        // ============================================================
+        const modalBackdrop = document.getElementById('tool-modal-backdrop');
+        const modalBody = document.getElementById('tool-modal-body');
+        const modalTitleText = document.getElementById('tool-modal-title-text');
+        const modalIcon = document.getElementById('tool-modal-icon');
+        const closeBtn = document.getElementById('tool-close-btn');
+        const tabBtns = document.querySelectorAll('.tool-tab-btn');
+
+        const TOOL_META = {
+            calendar: { title: 'Hindu Calendar', icon: 'fas fa-calendar-days' },
+            panchang: { title: 'Daily Panchang', icon: 'fas fa-sun' },
+            shop: { title: 'Find Puja Shop', icon: 'fas fa-store' },
+            organiser: { title: 'Bhajan Organiser', icon: 'fas fa-users' },
+            kundli: { title: 'Vedic Birth Chart (Kundli)', icon: 'fas fa-star-and-crescent' },
+            malajaap: { title: '108-Bead Mala Jaap', icon: 'fas fa-spa' },
+            poster: { title: "Today's Devotional Poster", icon: 'fas fa-image' }
+        };
+
+        let activeTool = null;
+
+        function openToolModal(toolKey) {
+            if (!TOOL_META[toolKey]) return;
+            activeTool = toolKey;
+            modalTitleText.textContent = TOOL_META[toolKey].title;
+            modalIcon.className = TOOL_META[toolKey].icon;
+            tabBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.tool === toolKey));
+            modalBackdrop.classList.add('open');
+            renderToolContent(toolKey);
+        }
+
+        function closeToolModal() {
+            modalBackdrop.classList.remove('open');
+            activeTool = null;
+        }
+
+        document.querySelectorAll('.feature-card.interactive').forEach(card => {
+            card.addEventListener('click', () => openToolModal(card.dataset.tool));
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openToolModal(card.dataset.tool);
                 }
-
-                const songItems = songList.querySelectorAll('li');
-                songItems.forEach(songItem => {
-                    songItem.addEventListener('click', () => {
-                        const index = parseInt(songItem.getAttribute('data-index'), 10);
-                        playSong(playlistId, index);
-                    });
-                });
             });
         });
+
+        tabBtns.forEach(btn => btn.addEventListener('click', () => openToolModal(btn.dataset.tool)));
+        closeBtn.addEventListener('click', closeToolModal);
+        modalBackdrop.addEventListener('click', (e) => {
+            if (e.target === modalBackdrop) closeToolModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalBackdrop.classList.contains('open')) closeToolModal();
+        });
+
+        // Astronomical helpers for Panchang, Calendar & Kundli
+        const TITHIS = [
+            'Pratipada', 'Dwitiya', 'Tritiya', 'Chaturthi', 'Panchami',
+            'Shashthi', 'Saptami', 'Ashtami', 'Navami', 'Dashami',
+            'Ekadashi', 'Dwadashi', 'Trayodashi', 'Chaturdashi', 'Purnima',
+            'Pratipada', 'Dwitiya', 'Tritiya', 'Chaturthi', 'Panchami',
+            'Shashthi', 'Saptami', 'Ashtami', 'Navami', 'Dashami',
+            'Ekadashi', 'Dwadashi', 'Trayodashi', 'Chaturdashi', 'Amavasya'
+        ];
+        const NAKSHATRAS = [
+            'Ashwini', 'Bharani', 'Krittika', 'Rohini', 'Mrigashira', 'Ardra',
+            'Punarvasu', 'Pushya', 'Ashlesha', 'Magha', 'Purva Phalguni', 'Uttara Phalguni',
+            'Hasta', 'Chitra', 'Swati', 'Vishakha', 'Anuradha', 'Jyeshtha',
+            'Mula', 'Purva Ashadha', 'Uttara Ashadha', 'Shravana', 'Dhanishta',
+            'Shatabhisha', 'Purva Bhadrapada', 'Uttara Bhadrapada', 'Revati'
+        ];
+        const YOGAS = [
+            'Vishkambha', 'Priti', 'Ayushman', 'Saubhagya', 'Shobhana', 'Atiganda',
+            'Sukarma', 'Dhriti', 'Shula', 'Ganda', 'Vriddhi', 'Dhruva', 'Vyaghata',
+            'Harshana', 'Vajra', 'Siddhi', 'Vyatipata', 'Variyan', 'Parigha', 'Shiva',
+            'Siddha', 'Sadhya', 'Shubha', 'Shukla', 'Brahma', 'Indra', 'Vaidhriti'
+        ];
+        const KARANAS = ['Bava', 'Balava', 'Kaulava', 'Taitila', 'Gara', 'Vanija', 'Vishti', 'Shakuni', 'Chatushpada', 'Naga', 'Kimstughna'];
+        const RASHIS = [
+            'Mesha (Aries)', 'Vrishabha (Taurus)', 'Mithuna (Gemini)', 'Karka (Cancer)',
+            'Simha (Leo)', 'Kanya (Virgo)', 'Tula (Libra)', 'Vrishchika (Scorpio)',
+            'Dhanu (Sagittarius)', 'Makara (Capricorn)', 'Kumbha (Aquarius)', 'Meena (Pisces)'
+        ];
+        const VAAR_INFO = [
+            { name: 'Ravivaar (Sunday)', deity: 'Surya Dev', rahu: '4:30 PM – 6:00 PM' },
+            { name: 'Somavaar (Monday)', deity: 'Lord Shiva', rahu: '7:30 AM – 9:00 AM' },
+            { name: 'Mangalvaar (Tuesday)', deity: 'Hanuman Ji', rahu: '3:00 PM – 4:30 PM' },
+            { name: 'Budhavaar (Wednesday)', deity: 'Lord Ganesh', rahu: '12:00 PM – 1:30 PM' },
+            { name: 'Guruvaar (Thursday)', deity: 'Brihaspati / Guru', rahu: '1:30 PM – 3:00 PM' },
+            { name: 'Shukravaar (Friday)', deity: 'Maa Lakshmi', rahu: '10:30 AM – 12:00 PM' },
+            { name: 'Shanivaar (Saturday)', deity: 'Shani Dev', rahu: '9:00 AM – 10:30 AM' }
+        ];
+
+        function normDeg(d) { return ((d % 360) + 360) % 360; }
+
+        function getJulianDay(date) {
+            return date.getTime() / 86400000 + 2440587.5;
+        }
+
+        function computePanchang(date) {
+            const d = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 6, 0, 0);
+            const jd = getJulianDay(d);
+            const daysSinceJ2000 = jd - 2451545.0;
+            const ayanamsa = 24.15;
+
+            const sunMean = normDeg(280.460 + 0.9856474 * daysSinceJ2000);
+            const sunAnom = normDeg(357.528 + 0.9856003 * daysSinceJ2000) * Math.PI / 180;
+            const sunLon = normDeg(sunMean + 1.915 * Math.sin(sunAnom) + 0.020 * Math.sin(2 * sunAnom) - ayanamsa);
+
+            const moonMean = normDeg(218.316 + 13.176396 * daysSinceJ2000);
+            const moonAnom = normDeg(134.963 + 13.064993 * daysSinceJ2000) * Math.PI / 180;
+            const moonLon = normDeg(moonMean + 6.289 * Math.sin(moonAnom) - ayanamsa);
+
+            const diff = normDeg(moonLon - sunLon);
+            const tithiIdx = Math.floor(diff / 12);
+            const paksha = tithiIdx < 15 ? 'Shukla Paksha' : 'Krishna Paksha';
+            const nakIdx = Math.floor(moonLon / (360 / 27));
+            const yogaIdx = Math.floor(normDeg(sunLon + moonLon) / (360 / 27));
+            const karanaIdx = Math.floor(diff / 6) % KARANAS.length;
+            const vaar = VAAR_INFO[d.getDay()];
+            const vikramSamvat = d.getFullYear() + (d.getMonth() >= 3 ? 57 : 56);
+
+            return {
+                vikramSamvat,
+                paksha,
+                tithi: TITHIS[tithiIdx],
+                tithiIdx,
+                nakshatra: NAKSHATRAS[nakIdx],
+                yoga: YOGAS[yogaIdx],
+                karana: KARANAS[karanaIdx],
+                vaar: vaar.name,
+                deity: vaar.deity,
+                rahuKaal: vaar.rahu,
+                sunSign: RASHIS[Math.floor(sunLon / 30)],
+                moonSign: RASHIS[Math.floor(moonLon / 30)]
+            };
+        }
+
+        function renderToolContent(toolKey) {
+            if (toolKey === 'calendar') renderCalendarTool();
+            else if (toolKey === 'panchang') renderPanchangTool();
+            else if (toolKey === 'shop') renderShopTool();
+            else if (toolKey === 'organiser') renderOrganiserTool();
+            else if (toolKey === 'kundli') renderKundliTool();
+            else if (toolKey === 'malajaap') renderMalaTool();
+            else if (toolKey === 'poster') renderPosterTool();
+        }
+
+        // 1. Hindu Calendar
+        let calCursor = new Date();
+        function renderCalendarTool() {
+            const year = calCursor.getFullYear();
+            const month = calCursor.getMonth();
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            const firstDow = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const today = new Date();
+
+            let cells = '';
+            for (let i = 0; i < firstDow; i++) {
+                cells += '<div></div>';
+            }
+
+            const specialDays = [];
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dt = new Date(year, month, day);
+                const p = computePanchang(dt);
+                const isToday = dt.toDateString() === today.toDateString();
+                let tag = '';
+                if (p.tithi === 'Ekadashi') tag = 'Ekadashi';
+                else if (p.tithi === 'Purnima') tag = 'Purnima';
+                else if (p.tithi === 'Amavasya') tag = 'Amavasya';
+                else if (p.tithi === 'Chaturthi' && p.paksha === 'Krishna Paksha') tag = 'Sankashti';
+                else if (p.tithi === 'Trayodashi') tag = 'Pradosh';
+
+                if (tag) specialDays.push({ day, tag, paksha: p.paksha });
+
+                cells += `
+                    <div class="cal-cell ${isToday ? 'today' : ''} ${tag ? 'fest' : ''}">
+                        <span>${day}</span>
+                        ${tag ? `<span class="cal-tag">${tag}</span>` : ''}
+                    </div>
+                `;
+            }
+
+            modalBody.innerHTML = `
+                <div class="cal-header">
+                    <button class="tool-btn secondary" id="cal-prev"><i class="fas fa-chevron-left"></i> Prev</button>
+                    <strong style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;">${monthNames[month]} ${year}</strong>
+                    <div style="display:flex;gap:8px;">
+                        <button class="tool-btn secondary" id="cal-today">Today</button>
+                        <button class="tool-btn secondary" id="cal-next">Next <i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="cal-grid">
+                    <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div>
+                    <div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+                    ${cells}
+                </div>
+                <div class="tool-box" style="margin-top:16px;">
+                    <label>Auspicious Tithis This Month</label>
+                    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;">
+                        ${specialDays.map(s => `<span class="count-badge">${s.day} ${monthNames[month].slice(0,3)} — ${s.tag} (${s.paksha.split(' ')[0]})</span>`).join('')}
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('cal-prev').onclick = () => { calCursor = new Date(year, month - 1, 1); renderCalendarTool(); };
+            document.getElementById('cal-next').onclick = () => { calCursor = new Date(year, month + 1, 1); renderCalendarTool(); };
+            document.getElementById('cal-today').onclick = () => { calCursor = new Date(); renderCalendarTool(); };
+        }
+
+        // 2. Daily Panchang
+        function renderPanchangTool(selectedDateStr) {
+            const now = new Date();
+            const defaultStr = selectedDateStr || `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+            const [y, m, d] = defaultStr.split('-').map(Number);
+            const p = computePanchang(new Date(y, m - 1, d));
+
+            modalBody.innerHTML = `
+                <div class="tool-box" style="margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+                    <div>
+                        <label>Select Date</label>
+                        <input type="date" id="panchang-date" class="tool-input" value="${defaultStr}" style="width:auto;">
+                    </div>
+                    <div style="text-align:right;">
+                        <label>Vikram Samvat</label>
+                        <strong style="font-size:1.15rem;color:var(--gold-deep);">${p.vikramSamvat} • ${p.paksha}</strong>
+                    </div>
+                </div>
+                <div class="tool-grid-3">
+                    <div class="tool-box"><label>Tithi</label><strong>${p.tithi}</strong></div>
+                    <div class="tool-box"><label>Nakshatra</label><strong>${p.nakshatra}</strong></div>
+                    <div class="tool-box"><label>Yoga</label><strong>${p.yoga}</strong></div>
+                    <div class="tool-box"><label>Karana</label><strong>${p.karana}</strong></div>
+                    <div class="tool-box"><label>Vaar (Day)</label><strong>${p.vaar}</strong></div>
+                    <div class="tool-box"><label>Day Deity</label><strong>${p.deity}</strong></div>
+                    <div class="tool-box"><label>Chandra Rashi</label><strong>${p.moonSign}</strong></div>
+                    <div class="tool-box"><label>Rahu Kaal</label><strong>${p.rahuKaal}</strong></div>
+                    <div class="tool-box"><label>Abhijit Muhurat</label><strong>11:48 AM – 12:36 PM</strong></div>
+                </div>
+            `;
+            document.getElementById('panchang-date').addEventListener('change', (e) => {
+                if (e.target.value) renderPanchangTool(e.target.value);
+            });
+        }
+
+        // 3. Find Shop
+        function renderShopTool() {
+            const categories = [
+                { label: 'Puja Samagri Store', query: 'puja samagri store' },
+                { label: 'Brass Idols & Diyas', query: 'brass pooja items shop' },
+                { label: 'Temple Flowers & Garlands', query: 'flower garland pooja shop' },
+                { label: 'Rudraksha & Mala', query: 'rudraksha spiritual shop' },
+                { label: 'Spiritual Books & Gita', query: 'hindu religious book store' }
+            ];
+
+            modalBody.innerHTML = `
+                <div class="tool-box" style="margin-bottom:14px;">
+                    <label>Your City or Area</label>
+                    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;">
+                        <input type="text" id="shop-city" class="tool-input" placeholder="e.g. Jaipur, Varanasi, Delhi..." style="flex:1;min-width:200px;">
+                        <button class="tool-btn" id="shop-search-btn"><i class="fas fa-magnifying-glass"></i> Search Maps</button>
+                        <button class="tool-btn secondary" id="shop-near-btn"><i class="fas fa-location-crosshairs"></i> Near Me</button>
+                    </div>
+                </div>
+                <div class="tool-box">
+                    <label>Quick Categories</label>
+                    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;">
+                        ${categories.map(c => `<button class="tool-btn secondary shop-cat-btn" data-q="${c.query}"><i class="fas fa-store"></i> ${c.label}</button>`).join('')}
+                    </div>
+                    <p id="shop-status" style="margin-top:12px;font-size:0.84rem;color:var(--ink-muted);">Select a category or enter your city to open nearby stores on Google Maps.</p>
+                </div>
+            `;
+
+            const openMaps = (q) => {
+                const city = document.getElementById('shop-city').value.trim();
+                const fullQuery = city ? `${q} in ${city}` : `${q} near me`;
+                window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullQuery)}`, '_blank', 'noopener');
+            };
+
+            document.getElementById('shop-search-btn').onclick = () => openMaps('puja samagri store');
+            document.querySelectorAll('.shop-cat-btn').forEach(btn => {
+                btn.onclick = () => openMaps(btn.dataset.q);
+            });
+            document.getElementById('shop-near-btn').onclick = () => {
+                const statusEl = document.getElementById('shop-status');
+                if (!navigator.geolocation) {
+                    openMaps('puja samagri store');
+                    return;
+                }
+                statusEl.textContent = 'Locating you...';
+                navigator.geolocation.getCurrentPosition(
+                    (pos) => {
+                        statusEl.textContent = 'Opening Google Maps for your location...';
+                        window.open(`https://www.google.com/maps/search/puja+samagri+store/@${pos.coords.latitude},${pos.coords.longitude},14z`, '_blank', 'noopener');
+                    },
+                    () => {
+                        statusEl.textContent = 'Location permission declined — opening general nearby search.';
+                        openMaps('puja samagri store');
+                    }
+                );
+            };
+        }
+
+        // 4. Bhajan Organiser (persisted in localStorage)
+        function renderOrganiserTool() {
+            const STORAGE_KEY = 'bhajjoray_events_v1';
+            const getEvents = () => {
+                try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); } catch { return []; }
+            };
+            const saveEvents = (list) => localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+
+            const render = () => {
+                const events = getEvents();
+                modalBody.innerHTML = `
+                    <form id="org-form" class="tool-box" style="margin-bottom:16px;">
+                        <div class="tool-grid-2" style="margin-bottom:10px;">
+                            <div>
+                                <label>Event Title</label>
+                                <input type="text" id="org-title" class="tool-input" placeholder="e.g. Saturday Sundarkand Path" required>
+                            </div>
+                            <div>
+                                <label>Deity / Theme</label>
+                                <input type="text" id="org-deity" class="tool-input" placeholder="e.g. Hanuman Ji, Krishna Kirtan">
+                            </div>
+                            <div>
+                                <label>Date &amp; Time</label>
+                                <input type="datetime-local" id="org-date" class="tool-input" required>
+                            </div>
+                            <div>
+                                <label>Venue / Address</label>
+                                <input type="text" id="org-venue" class="tool-input" placeholder="e.g. Community Mandir Hall" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="tool-btn"><i class="fas fa-plus"></i> Add Bhajan Event</button>
+                    </form>
+                    <div class="tool-box">
+                        <label>Scheduled Gatherings (${events.length})</label>
+                        <div id="org-list" style="display:flex;flex-direction:column;gap:10px;margin-top:8px;">
+                            ${events.length === 0 ? '<p style="font-size:0.86rem;color:var(--ink-muted);">No events scheduled yet. Add your first bhajan sandhya above!</p>' :
+                                events.map((ev, idx) => `
+                                    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.72);border:1px solid rgba(217,119,6,0.2);flex-wrap:wrap;">
+                                        <div>
+                                            <strong>${ev.title}</strong> ${ev.deity ? `<span class="count-badge">${ev.deity}</span>` : ''}
+                                            <div style="font-size:0.8rem;color:var(--ink-muted);margin-top:2px;">
+                                                <i class="fas fa-clock"></i> ${ev.date.replace('T', ' ')} &nbsp;•&nbsp; <i class="fas fa-location-dot"></i> ${ev.venue}
+                                            </div>
+                                        </div>
+                                        <div style="display:flex;gap:6px;">
+                                            <button class="tool-btn secondary org-copy" data-idx="${idx}" style="padding:6px 12px;font-size:0.78rem;"><i class="fas fa-copy"></i> Copy Invite</button>
+                                            <button class="tool-btn secondary org-del" data-idx="${idx}" style="padding:6px 10px;font-size:0.78rem;color:#b91c1c;"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </div>
+                                `).join('')
+                            }
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById('org-form').onsubmit = (e) => {
+                    e.preventDefault();
+                    const next = getEvents();
+                    next.push({
+                        title: document.getElementById('org-title').value.trim(),
+                        deity: document.getElementById('org-deity').value.trim(),
+                        date: document.getElementById('org-date').value,
+                        venue: document.getElementById('org-venue').value.trim()
+                    });
+                    saveEvents(next);
+                    render();
+                };
+
+                document.querySelectorAll('.org-del').forEach(b => {
+                    b.onclick = () => {
+                        const next = getEvents();
+                        next.splice(parseInt(b.dataset.idx, 10), 1);
+                        saveEvents(next);
+                        render();
+                    };
+                });
+
+                document.querySelectorAll('.org-copy').forEach(b => {
+                    b.onclick = () => {
+                        const ev = getEvents()[parseInt(b.dataset.idx, 10)];
+                        const text = `🙏 Jai Shri Ram! You are invited to ${ev.title}${ev.deity ? ` (${ev.deity})` : ''}.\n📅 ${ev.date.replace('T', ' ')}\n📍 ${ev.venue}\n— Shared via Bhajjoray`;
+                        navigator.clipboard?.writeText(text);
+                        b.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                    };
+                });
+            };
+            render();
+        }
+
+        // 5. Birth Chart (Vedic Kundli)
+        function renderKundliTool() {
+            modalBody.innerHTML = `
+                <div class="kundli-layout">
+                    <form id="kundli-form" class="tool-box" style="display:flex;flex-direction:column;gap:10px;">
+                        <div><label>Full Name</label><input type="text" id="k-name" class="tool-input" value="Devotee" required></div>
+                        <div><label>Date of Birth</label><input type="date" id="k-dob" class="tool-input" value="1995-08-15" required></div>
+                        <div><label>Time of Birth</label><input type="time" id="k-tob" class="tool-input" value="08:30" required></div>
+                        <div><label>Place of Birth</label><input type="text" id="k-place" class="tool-input" value="Jaipur, India"></div>
+                        <div>
+                            <label>Chart Style</label>
+                            <select id="k-style" class="tool-select">
+                                <option value="north" selected>North Indian (Diamond)</option>
+                                <option value="south">South Indian (Square)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="tool-btn"><i class="fas fa-sparkles"></i> Generate Kundli</button>
+                    </form>
+                    <div id="kundli-output" class="tool-box"></div>
+                </div>
+            `;
+
+            const computeAndDraw = () => {
+                const name = document.getElementById('k-name').value.trim() || 'Devotee';
+                const dob = document.getElementById('k-dob').value;
+                const tob = document.getElementById('k-tob').value || '06:00';
+                const style = document.getElementById('k-style').value;
+                const [y, m, d] = dob.split('-').map(Number);
+                const [hh, mm] = tob.split(':').map(Number);
+                const dt = new Date(y, m - 1, d, hh, mm);
+                const jd = getJulianDay(dt);
+                const days = jd - 2451545.0;
+                const ayanamsa = 24.15;
+
+                const planets = [
+                    { name: 'Surya (Sun)', abbr: 'Su', lon: normDeg(280.46 + 0.985647 * days - ayanamsa) },
+                    { name: 'Chandra (Moon)', abbr: 'Mo', lon: normDeg(218.32 + 13.176396 * days - ayanamsa) },
+                    { name: 'Mangal (Mars)', abbr: 'Ma', lon: normDeg(355.43 + 0.524039 * days - ayanamsa) },
+                    { name: 'Budh (Mercury)', abbr: 'Me', lon: normDeg(252.25 + 4.092334 * days - ayanamsa) },
+                    { name: 'Guru (Jupiter)', abbr: 'Ju', lon: normDeg(34.35 + 0.083085 * days - ayanamsa) },
+                    { name: 'Shukra (Venus)', abbr: 'Ve', lon: normDeg(181.98 + 1.602130 * days - ayanamsa) },
+                    { name: 'Shani (Saturn)', abbr: 'Sa', lon: normDeg(50.08 + 0.033444 * days - ayanamsa) },
+                    { name: 'Rahu', abbr: 'Ra', lon: normDeg(125.04 - 0.052954 * days - ayanamsa) }
+                ];
+                planets.push({ name: 'Ketu', abbr: 'Ke', lon: normDeg(planets[7].lon + 180) });
+
+                const lagnaIdx = Math.floor(normDeg(planets[0].lon + (hh + mm / 60 - 6) * 15) / 30);
+
+                let chartSvg = '';
+                if (style === 'north') {
+                    const houses = Array.from({ length: 12 }, () => []);
+                    planets.forEach(pl => {
+                        const rIdx = Math.floor(pl.lon / 30);
+                        const houseIdx = (rIdx - lagnaIdx + 12) % 12;
+                        houses[houseIdx].push(pl.abbr);
+                    });
+
+                    const houseCoords = [
+                        [150, 72], [85, 36], [36, 82], [75, 150],
+                        [36, 218], [85, 264], [150, 228], [215, 264],
+                        [264, 218], [225, 150], [264, 82], [215, 36]
+                    ];
+
+                    const svgText = houses.map((arr, i) => {
+                        const [cx, cy] = houseCoords[i];
+                        const rNum = ((lagnaIdx + i) % 12) + 1;
+                        return `
+                            <text x="${cx}" y="${cy - 10}" text-anchor="middle" font-size="9" fill="#855224" font-weight="700">${rNum}</text>
+                            <text x="${cx}" y="${cy + 6}" text-anchor="middle" font-size="11" fill="#2d1606" font-weight="700">${arr.join(' ')}</text>
+                        `;
+                    }).join('');
+
+                    chartSvg = `
+                        <svg viewBox="0 0 300 300" style="width:240px;height:240px;background:rgba(255,251,235,0.85);border:2px solid #b45309;border-radius:10px;flex-shrink:0;">
+                            <line x1="0" y1="0" x2="300" y2="300" stroke="#d97706" stroke-width="1.5"/>
+                            <line x1="300" y1="0" x2="0" y2="300" stroke="#d97706" stroke-width="1.5"/>
+                            <polygon points="150,0 300,150 150,300 0,150" fill="none" stroke="#b45309" stroke-width="1.8"/>
+                            ${svgText}
+                        </svg>
+                    `;
+                } else {
+                    // South Indian 4x4 Fixed Rashi Grid (index 0=Mesha at (75,0) ... index 11=Meena at (0,0))
+                    const southCoords = [
+                        [75, 0], [150, 0], [225, 0], [225, 75],
+                        [225, 150], [225, 225], [150, 225], [75, 225],
+                        [0, 225], [0, 150], [0, 75], [0, 0]
+                    ];
+                    const rashiBuckets = Array.from({ length: 12 }, () => []);
+                    rashiBuckets[lagnaIdx].push('Lg');
+                    planets.forEach(pl => {
+                        const rIdx = Math.floor(pl.lon / 30);
+                        rashiBuckets[rIdx].push(pl.abbr);
+                    });
+
+                    const cellsSvg = southCoords.map(([x, y], rIdx) => {
+                        const items = rashiBuckets[rIdx];
+                        const line1 = items.slice(0, 3).join(' ');
+                        const line2 = items.slice(3, 6).join(' ');
+                        const isLagna = rIdx === lagnaIdx;
+                        return `
+                            <rect x="${x}" y="${y}" width="75" height="75" fill="${isLagna ? 'rgba(254, 240, 138, 0.7)' : 'none'}" stroke="#d97706" stroke-width="1.4"/>
+                            ${isLagna ? `<line x1="${x}" y1="${y + 16}" x2="${x + 16}" y2="${y}" stroke="#b45309" stroke-width="1.4"/>` : ''}
+                            <text x="${x + 6}" y="${y + 13}" font-size="8" fill="#855224" font-weight="700">${RASHIS[rIdx].split(' ')[0].slice(0, 3)}</text>
+                            <text x="${x + 37.5}" y="${y + 38}" text-anchor="middle" font-size="10.5" fill="#2d1606" font-weight="700">${line1}</text>
+                            <text x="${x + 37.5}" y="${y + 54}" text-anchor="middle" font-size="10.5" fill="#2d1606" font-weight="700">${line2}</text>
+                        `;
+                    }).join('');
+
+                    chartSvg = `
+                        <svg viewBox="0 0 300 300" style="width:240px;height:240px;background:rgba(255,251,235,0.85);border:2px solid #b45309;border-radius:10px;flex-shrink:0;">
+                            ${cellsSvg}
+                            <text x="150" y="144" text-anchor="middle" font-size="12" fill="#855224" font-weight="700">Rashi Chart</text>
+                            <text x="150" y="162" text-anchor="middle" font-size="10" fill="#b45309" font-weight="600">South Indian</text>
+                        </svg>
+                    `;
+                }
+
+                const moonRashi = RASHIS[Math.floor(planets[1].lon / 30)];
+                const nak = NAKSHATRAS[Math.floor(planets[1].lon / (360 / 27))];
+                const styleLabel = style === 'north' ? 'North Indian Lagna Chart' : 'South Indian Rashi Chart';
+
+                document.getElementById('kundli-output').innerHTML = `
+                    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
+                        <strong style="font-size:1.05rem;">${name} — ${styleLabel}</strong>
+                        <span class="count-badge">Lagna: ${RASHIS[lagnaIdx].split(' ')[0]}</span>
+                    </div>
+                    <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
+                        ${chartSvg}
+                        <div style="flex:1;min-width:190px;font-size:0.83rem;">
+                            <div style="margin-bottom:8px;"><strong>Chandra Rashi:</strong> ${moonRashi}</div>
+                            <div style="margin-bottom:10px;"><strong>Janam Nakshatra:</strong> ${nak}</div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
+                                ${planets.map(pl => `<div><strong>${pl.abbr}:</strong> ${RASHIS[Math.floor(pl.lon / 30)].split(' ')[0]}</div>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            };
+
+            document.getElementById('kundli-form').onsubmit = (e) => { e.preventDefault(); computeAndDraw(); };
+            document.getElementById('k-style').onchange = computeAndDraw;
+            computeAndDraw();
+        }
+
+        // 6. Mala Jaap (108-Bead Digital Counter)
+        function renderMalaTool() {
+            const MALA_KEY = 'bhajjoray_mala_v1';
+            let state = { count: 0, malas: 0, mantra: 'Om Namah Shivaya' };
+            try {
+                const saved = JSON.parse(localStorage.getItem(MALA_KEY));
+                if (saved) state = { ...state, ...saved };
+            } catch {}
+
+            const save = () => localStorage.setItem(MALA_KEY, JSON.stringify(state));
+
+            const playChime = () => {
+                try {
+                    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(528, ctx.currentTime);
+                    gain.gain.setValueAtTime(0.08, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.36);
+                } catch {}
+            };
+
+            const drawMala = () => {
+                const circ = 2 * Math.PI * 92;
+                const offset = circ - (state.count / 108) * circ;
+                modalBody.innerHTML = `
+                    <div class="mala-wrap">
+                        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;">
+                            <select id="mala-mantra" class="tool-select" style="width:auto;min-width:240px;">
+                                ${['Om Namah Shivaya', 'Hare Krishna Hare Rama', 'Om Namo Bhagavate Vasudevaya', 'Gayatri Mantra', 'Jai Shri Ram', 'Radhe Radhe']
+                                    .map(m => `<option value="${m}" ${m === state.mantra ? 'selected' : ''}>${m}</option>`).join('')}
+                            </select>
+                            <span class="count-badge">Malas Completed: <strong id="mala-total">${state.malas}</strong></span>
+                        </div>
+
+                        <div class="mala-ring-box" id="mala-tap-area" title="Click or tap to count bead">
+                            <svg viewBox="0 0 210 210">
+                                <circle cx="105" cy="105" r="92" fill="none" stroke="rgba(180,83,9,0.16)" stroke-width="10"/>
+                                <circle id="mala-progress" cx="105" cy="105" r="92" fill="none" stroke="#d97706" stroke-width="10"
+                                    stroke-linecap="round" stroke-dasharray="${circ}" stroke-dashoffset="${offset}"/>
+                            </svg>
+                            <div class="mala-center">
+                                <div class="mala-count" id="mala-num">${state.count}</div>
+                                <div class="mala-sub">of 108 Beads</div>
+                            </div>
+                        </div>
+
+                        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
+                            <button class="tool-btn" id="mala-chant-btn"><i class="fas fa-spa"></i> Chant +1</button>
+                            <button class="tool-btn secondary" id="mala-reset-btn"><i class="fas fa-rotate-left"></i> Reset Bead</button>
+                        </div>
+                    </div>
+                `;
+
+                const increment = () => {
+                    state.count += 1;
+                    if (state.count >= 108) {
+                        state.count = 0;
+                        state.malas += 1;
+                        playChime();
+                    }
+                    save();
+                    document.getElementById('mala-num').textContent = state.count;
+                    document.getElementById('mala-total').textContent = state.malas;
+                    document.getElementById('mala-progress').setAttribute('stroke-dashoffset', circ - (state.count / 108) * circ);
+                };
+
+                document.getElementById('mala-tap-area').onclick = increment;
+                document.getElementById('mala-chant-btn').onclick = increment;
+                document.getElementById('mala-mantra').onchange = (e) => { state.mantra = e.target.value; save(); };
+                document.getElementById('mala-reset-btn').onclick = () => {
+                    state.count = 0;
+                    save();
+                    drawMala();
+                };
+            };
+            drawMala();
+        }
+
+        // 7. Today's Poster (Deity of the Day + Frosted Gita Box + QR Download)
+        function renderPosterTool() {
+            const DAY_DEITIES = [
+                { day: 'SUNDAY', hi: 'शुभ रविवार', label: 'Devotional Sunday', file: 'krishna.webp', name: 'Shri Krishna (Sunday)' },
+                { day: 'MONDAY', hi: 'शुभ सोमवार', label: 'Devotional Monday', file: 'shiva.webp', name: 'Lord Shiva (Monday)' },
+                { day: 'TUESDAY', hi: 'शुभ मंगलवार', label: 'Devotional Tuesday', file: 'hanuman.webp', name: 'Hanuman Ji (Tuesday)' },
+                { day: 'WEDNESDAY', hi: 'शुभ बुधवार', label: 'Devotional Wednesday', file: 'ganesh.webp', name: 'Lord Ganesh (Wednesday)' },
+                { day: 'THURSDAY', hi: 'शुभ गुरुवार', label: 'Devotional Thursday', file: 'radhekrishna.webp', name: 'Radhe Krishna (Thursday)' },
+                { day: 'FRIDAY', hi: 'शुभ शुक्रवार', label: 'Devotional Friday', file: 'malaxmi.webp', name: 'Maa Lakshmi (Friday)' },
+                { day: 'SATURDAY', hi: 'शुभ शनिवार', label: 'Devotional Saturday', file: 'khatu.webp', name: 'Khatu Shyam Ji (Saturday)' }
+            ];
+
+            const GITA_VERSES = [
+                {
+                    sa: 'न जायते म्रियते वा कदाचिन्नायं भूत्वा भविता वा न भूयः।\nअजो नित्यः शाश्वतोऽयं पुराणो न हन्यते हन्यमाने शरीरे॥',
+                    en: 'The soul is never born nor does it ever die; nor having once been, does it ever cease to be. The soul is unborn, eternal, ever-existing and primeval.',
+                    ref: 'Bhagavad Gita 2.20'
+                },
+                {
+                    sa: 'कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥',
+                    en: 'You have a right to perform your prescribed duty, but you are not entitled to the fruits of action. Never consider yourself the cause of the results.',
+                    ref: 'Bhagavad Gita 2.47'
+                },
+                {
+                    sa: 'यदा यदा हि धर्मस्य ग्लानिर्भवति भारत।\nअभ्युत्थानमधर्मस्य तदात्मानं सृजाम्यहम्॥',
+                    en: 'Whenever there is a decline in righteousness and an uprising of unrighteousness, O Arjuna, at that time I manifest Myself on earth.',
+                    ref: 'Bhagavad Gita 4.7'
+                },
+                {
+                    sa: 'अनन्याश्चिन्तयन्तो मां ये जनाः पर्युपासते।\nतेषां नित्याभियुक्तानां योगक्षेमं वहाम्यहम्॥',
+                    en: 'To those who are constantly devoted and worship Me with undivided love, I personally carry what they lack and preserve what they have.',
+                    ref: 'Bhagavad Gita 9.22'
+                },
+                {
+                    sa: 'मन्मना भव मद्भक्तो मद्याजी मां नमस्कुरु।\nमामेवैष्यसि सत्यं ते प्रतिजाने प्रियोऽसि मे॥',
+                    en: 'Always think of Me, become My devotee, worship Me and offer your homage unto Me. Thus you will come to Me without fail; I promise you this.',
+                    ref: 'Bhagavad Gita 18.65'
+                }
+            ];
+
+            const now = new Date();
+            const todayDow = now.getDay();
+            let selectedDayIdx = todayDow;
+            let verseIdx = Math.floor(Math.random() * GITA_VERSES.length);
+            const datePillText = `${now.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' }).toUpperCase()}`;
+
+            modalBody.innerHTML = `
+                <div class="kundli-layout">
+                    <div class="tool-box" style="display:flex;flex-direction:column;gap:12px;">
+                        <div>
+                            <label>Deity of the Day</label>
+                            <select id="poster-deity" class="tool-select">
+                                ${DAY_DEITIES.map((d, i) => `<option value="${i}" ${i === selectedDayIdx ? 'selected' : ''}>${d.name}</option>`).join('')}
+                            </select>
+                        </div>
+                        <div>
+                            <label>Bhagavad Gita Wisdom</label>
+                            <button type="button" class="tool-btn secondary" id="poster-shuffle" style="width:100%;">
+                                <i class="fas fa-shuffle"></i> Random Gita Shloka
+                            </button>
+                        </div>
+                        <button type="button" class="tool-btn" id="poster-download">
+                            <i class="fas fa-download"></i> Download Poster (PNG)
+                        </button>
+                        <p style="font-size:0.78rem;color:var(--ink-muted);line-height:1.45;">
+                            Automatically selects today's deity and pairs it with a frosted Bhagavad Gita wisdom card &amp; app QR code.
+                        </p>
+                    </div>
+                    <div class="poster-preview-wrap">
+                        <canvas id="poster-canvas" width="720" height="1280"></canvas>
+                    </div>
+                </div>
+            `;
+
+            const canvas = document.getElementById('poster-canvas');
+            const ctx = canvas.getContext('2d');
+            const blurCanvas = document.createElement('canvas');
+            blurCanvas.width = 720;
+            blurCanvas.height = 1280;
+            const blurCtx = blurCanvas.getContext('2d');
+
+            const deityImg = new Image();
+            const qrImg = new Image();
+            qrImg.crossOrigin = 'anonymous';
+            qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.bhajjoray.bhajjoray';
+
+            function roundRectPath(c, x, y, w, h, r) {
+                c.beginPath();
+                c.moveTo(x + r, y);
+                c.arcTo(x + w, y, x + w, y + h, r);
+                c.arcTo(x + w, y + h, x, y + h, r);
+                c.arcTo(x, y + h, x, y, r);
+                c.arcTo(x, y, x + w, y, r);
+                c.closePath();
+            }
+
+            function drawFrostedBox(x, y, w, h, r) {
+                ctx.save();
+                roundRectPath(ctx, x, y, w, h, r);
+                ctx.clip();
+                ctx.drawImage(blurCanvas, 0, 0);
+                ctx.fillStyle = 'rgba(255, 251, 242, 0.78)';
+                ctx.fillRect(x, y, w, h);
+                ctx.restore();
+
+                ctx.save();
+                roundRectPath(ctx, x, y, w, h, r);
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.88)';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                ctx.restore();
+            }
+
+            function drawWrappedText(text, x, startY, maxWidth, lineHeight) {
+                const paragraphs = text.split('\n');
+                let y = startY;
+                for (const para of paragraphs) {
+                    const words = para.split(' ');
+                    let line = '';
+                    for (const w of words) {
+                        const test = line + w + ' ';
+                        if (ctx.measureText(test).width > maxWidth && line !== '') {
+                            ctx.fillText(line.trim(), x, y);
+                            line = w + ' ';
+                            y += lineHeight;
+                        } else {
+                            line = test;
+                        }
+                    }
+                    if (line.trim()) {
+                        ctx.fillText(line.trim(), x, y);
+                        y += lineHeight;
+                    }
+                }
+                return y;
+            }
+
+            const drawPoster = () => {
+                const info = DAY_DEITIES[selectedDayIdx];
+                const verse = GITA_VERSES[verseIdx];
+
+                // Base background
+                const bgGrad = ctx.createLinearGradient(0, 0, 0, 1280);
+                bgGrad.addColorStop(0, '#3b1e08');
+                bgGrad.addColorStop(1, '#1a0d04');
+                ctx.fillStyle = bgGrad;
+                ctx.fillRect(0, 0, 720, 1280);
+
+                // Full-bleed deity image (cover fit)
+                if (deityImg.complete && deityImg.naturalWidth > 0) {
+                    const scale = Math.max(720 / deityImg.naturalWidth, 1280 / deityImg.naturalHeight);
+                    const dw = deityImg.naturalWidth * scale;
+                    const dh = deityImg.naturalHeight * scale;
+                    const dx = (720 - dw) / 2;
+                    const dy = (1280 - dh) / 2;
+                    ctx.drawImage(deityImg, dx, dy, dw, dh);
+
+                    blurCtx.clearRect(0, 0, 720, 1280);
+                    blurCtx.filter = 'blur(18px) brightness(1.08)';
+                    blurCtx.drawImage(deityImg, dx, dy, dw, dh);
+                    blurCtx.filter = 'none';
+                } else {
+                    blurCtx.fillStyle = '#fef3c7';
+                    blurCtx.fillRect(0, 0, 720, 1280);
+                }
+
+                // Subtle top & bottom vignette for legibility
+                const vig = ctx.createLinearGradient(0, 0, 0, 1280);
+                vig.addColorStop(0, 'rgba(0,0,0,0.22)');
+                vig.addColorStop(0.45, 'rgba(0,0,0,0)');
+                vig.addColorStop(1, 'rgba(0,0,0,0.45)');
+                ctx.fillStyle = vig;
+                ctx.fillRect(0, 0, 720, 1280);
+
+                // 1. Top Frosted Pill
+                drawFrostedBox(46, 36, 628, 66, 33);
+                ctx.fillStyle = '#1f2937';
+                ctx.font = '700 22px "Plus Jakarta Sans", sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText(`ॐ   ${info.day}  •  ${datePillText}   ॐ`, 360, 77);
+
+                // 2. Main Frosted Gita Wisdom Card
+                drawFrostedBox(46, 610, 628, 415, 28);
+
+                ctx.fillStyle = '#1f160f';
+                ctx.font = '700 32px Georgia, serif';
+                ctx.textAlign = 'center';
+                ctx.fillText(`${info.label}  •  ${info.hi}`, 360, 668);
+
+                // Gold divider & subtitle
+                ctx.fillStyle = '#b45309';
+                ctx.font = '700 18px "Plus Jakarta Sans", sans-serif';
+                ctx.fillText('—   •   DAILY BHAGAVAD GITA WISDOM   •   —', 360, 712);
+
+                // Sanskrit Shloka
+                ctx.fillStyle = '#991b1b';
+                ctx.font = '700 22px Georgia, serif';
+                const afterSaY = drawWrappedText(verse.sa, 360, 764, 560, 34);
+
+                // English Translation
+                ctx.fillStyle = '#1f2937';
+                ctx.font = '500 21px "Plus Jakarta Sans", sans-serif';
+                const afterEnY = drawWrappedText(verse.en, 360, afterSaY + 18, 550, 30);
+
+                // Verse Reference
+                ctx.fillStyle = '#b45309';
+                ctx.font = '700 20px "Plus Jakarta Sans", sans-serif';
+                ctx.fillText(`— ${verse.ref}`, 360, Math.min(afterEnY + 16, 1002));
+
+                // 3. Bottom Frosted QR & App Card
+                drawFrostedBox(46, 1048, 628, 190, 26);
+
+                // QR white frame
+                ctx.fillStyle = '#ffffff';
+                roundRectPath(ctx, 76, 1073, 140, 140, 14);
+                ctx.fill();
+
+                if (qrImg.complete && qrImg.naturalWidth > 0) {
+                    ctx.drawImage(qrImg, 86, 1083, 120, 120);
+                } else {
+                    ctx.fillStyle = '#2d1606';
+                    ctx.font = '700 14px sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('Bhajjoray', 146, 1140);
+                    ctx.fillText('Play Store', 146, 1160);
+                }
+
+                // App Info Text
+                ctx.textAlign = 'left';
+                ctx.fillStyle = '#111827';
+                ctx.font = '700 25px "Plus Jakarta Sans", sans-serif';
+                ctx.fillText('Scan to download the app', 244, 1108);
+
+                ctx.fillStyle = '#b45309';
+                ctx.font = '700 21px "Plus Jakarta Sans", sans-serif';
+                ctx.fillText('Bhajjoray: Bhagavad Gita & Bhajans', 244, 1144);
+
+                ctx.fillStyle = '#374151';
+                ctx.font = '500 16px "Plus Jakarta Sans", sans-serif';
+                ctx.fillText('Daily Panchang, Festival Calendar, Mala Jaap, Live Darshan', 244, 1176);
+
+                ctx.fillStyle = '#6b7280';
+                ctx.font = 'italic 16px "Plus Jakarta Sans", sans-serif';
+                ctx.fillText('Free on Google Play Store', 244, 1206);
+            };
+
+            const loadDeityAndDraw = () => {
+                deityImg.onload = drawPoster;
+                deityImg.src = `deities/images/${DAY_DEITIES[selectedDayIdx].file}`;
+                if (deityImg.complete) drawPoster();
+            };
+
+            qrImg.onload = drawPoster;
+            loadDeityAndDraw();
+
+            document.getElementById('poster-deity').onchange = (e) => {
+                selectedDayIdx = parseInt(e.target.value, 10);
+                loadDeityAndDraw();
+            };
+            document.getElementById('poster-shuffle').onclick = () => {
+                verseIdx = (verseIdx + 1 + Math.floor(Math.random() * (GITA_VERSES.length - 1))) % GITA_VERSES.length;
+                drawPoster();
+            };
+            document.getElementById('poster-download').onclick = () => {
+                const a = document.createElement('a');
+                a.download = `bhajjoray-${DAY_DEITIES[selectedDayIdx].day.toLowerCase()}-poster.png`;
+                a.href = canvas.toDataURL('image/png');
+                a.click();
+            };
+        }
     });
     </script>
 </body>
