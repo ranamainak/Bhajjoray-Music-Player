@@ -1326,6 +1326,10 @@
                     <i class="fas fa-om" style="color:#bae6fd;"></i>
                     <span>Vrat Kathas</span>
                 </button>
+                <button class="quick-tile glass wide" data-tool="podcast">
+                    <i class="fas fa-podcast" style="color:#fda4af;"></i>
+                    <span>Daily Video Podcast</span>
+                </button>
             </section>
 
             <!-- Bottom-Right App Download Banners -->
@@ -1892,7 +1896,8 @@
             organiser: { title: 'Bhajan Organiser', icon: 'fas fa-users' },
             kundli: { title: 'Vedic Birth Chart (Kundli)', icon: 'fas fa-dharmachakra' },
             malajaap: { title: '108-Bead Mala Jaap', icon: 'fas fa-spa' },
-            poster: { title: "Today's Devotional Poster", icon: 'fas fa-image' }
+            poster: { title: "Today's Devotional Poster", icon: 'fas fa-image' },
+            podcast: { title: 'Daily Video Podcast', icon: 'fas fa-podcast' }
         };
 
         function openToolModal(toolKey) {
@@ -1956,9 +1961,14 @@
             `);
         });
 
-        closeBtn.addEventListener('click', () => modalBackdrop.classList.remove('open'));
-        modalBackdrop.addEventListener('click', (e) => { if (e.target === modalBackdrop) modalBackdrop.classList.remove('open'); });
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') modalBackdrop.classList.remove('open'); });
+        function closeToolModal() {
+            const vid = document.getElementById('podcast-video');
+            if (vid) vid.pause();
+            modalBackdrop.classList.remove('open');
+        }
+        closeBtn.addEventListener('click', closeToolModal);
+        modalBackdrop.addEventListener('click', (e) => { if (e.target === modalBackdrop) closeToolModal(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeToolModal(); });
 
         // Astronomical Helpers
         const TITHIS = [
@@ -2031,6 +2041,7 @@
             else if (toolKey === 'kundli') renderKundliTool();
             else if (toolKey === 'malajaap') renderMalaTool();
             else if (toolKey === 'poster') renderPosterTool();
+            else if (toolKey === 'podcast') renderPodcastTool();
         }
 
         let calCursor = new Date();
@@ -2461,6 +2472,71 @@
                 a.href = canvas.toDataURL('image/png');
                 a.click();
             };
+        }
+
+        function renderPodcastTool() {
+            const R2_PUBLIC_BASE = 'https://cdn.bhajjoray.com';
+            const MAX_FALLBACK_DAYS = 14;
+
+            function formatIsoDate(d) {
+                return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+            }
+
+            let daysBack = 0;
+            const buildVideoUrl = (offsetDays) => {
+                const dt = new Date();
+                dt.setDate(dt.getDate() - offsetDays);
+                const iso = formatIsoDate(dt);
+                return {
+                    iso,
+                    label: dt.toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }),
+                    url: `${R2_PUBLIC_BASE}/podcast/daily/${iso}/video_hi.mp4`
+                };
+            };
+
+            const initial = buildVideoUrl(0);
+
+            modalBody.innerHTML = `
+                <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;width:100%;max-width:340px;gap:8px;flex-wrap:wrap;">
+                        <span class="count-badge" id="podcast-date-badge"><i class="fas fa-calendar-day"></i> ${initial.label}</span>
+                        <span style="font-size:0.78rem;color:var(--text-muted);" id="podcast-status">Loading...</span>
+                    </div>
+                    <video id="podcast-video" controls playsinline preload="metadata" poster="images/twilight_krishna_bg.jpg"
+                        style="aspect-ratio:9/16;height:min(64vh,540px);width:auto;max-width:100%;border-radius:18px;background:#050816;border:1.5px solid rgba(255,255,255,0.28);box-shadow:0 16px 38px rgba(0,0,0,0.45);object-fit:contain;display:block;">
+                        Your browser does not support HTML5 video.
+                    </video>
+                </div>
+            `;
+
+            const vid = document.getElementById('podcast-video');
+            const dateBadge = document.getElementById('podcast-date-badge');
+            const statusEl = document.getElementById('podcast-status');
+
+            const tryLoad = (offset) => {
+                const info = buildVideoUrl(offset);
+                dateBadge.innerHTML = `<i class="fas fa-calendar-day"></i> ${info.label}`;
+                statusEl.textContent = offset === 0 ? "Today's Episode" : `Latest (${info.iso})`;
+                statusEl.style.color = 'var(--text-secondary)';
+                vid.src = info.url;
+                vid.load();
+            };
+
+            vid.addEventListener('play', () => {
+                if (!audioPlayer.paused) audioPlayer.pause();
+            });
+
+            vid.addEventListener('error', () => {
+                if (daysBack < MAX_FALLBACK_DAYS) {
+                    daysBack += 1;
+                    tryLoad(daysBack);
+                } else {
+                    statusEl.textContent = 'No recent episode found';
+                    statusEl.style.color = '#fca5a5';
+                }
+            });
+
+            tryLoad(0);
         }
     });
     </script>
